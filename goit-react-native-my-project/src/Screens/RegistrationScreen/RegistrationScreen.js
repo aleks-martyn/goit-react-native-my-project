@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
   image: {
     width: 320,
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   wrap: {
-    marginTop: 218,
+  
     width: '100%',
     height: 350,
     backgroundColor: '#fff',
