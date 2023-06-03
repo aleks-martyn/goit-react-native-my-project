@@ -31,7 +31,7 @@ export default function LoginScreen() {
               inputMode="email"
             ></TextInput>
             <TextInput
-              style={[styles.input, { marginBottom: 30 }, customStylePass]}
+              style={[styles.input, customStylePass]}
               placeholder="Пароль"
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
   },
   wrap: {
     width: '100%',
-    height: 500,
-    paddingTop: 70,
+    height: 420,
+    paddingTop: 15,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 40,
+    marginTop: 25,
     marginBottom: 16,
     alignItems: 'center',
     backgroundColor: '#ff6c00',
