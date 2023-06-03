@@ -18,7 +18,7 @@ export default function LoginScreen() {
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
   return (
-    <View>
+    <View style={styles.wrapper}>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.wrap}>
           <Text style={styles.title}>Увійти</Text>
@@ -35,6 +35,7 @@ export default function LoginScreen() {
               placeholder="Пароль"
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
+              secureTextEntry
             ></TextInput>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Увійти</Text>
@@ -48,8 +49,12 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    height: '100%',
+  },
   image: {
-    width: 320,
+    width: '100%',
     height: '100%',
     flex: 1,
     flexDirection: 'column',
