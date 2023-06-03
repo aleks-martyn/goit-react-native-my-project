@@ -1,7 +1,6 @@
 import {
   Button,
   ImageBackground,
-  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -22,7 +21,26 @@ export default function LoginScreen() {
     <View>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.wrap}>
-          <Text style={styles.title}>Реєстрація</Text>
+          <Text style={styles.title}>Увійти</Text>
+          <SafeAreaView>
+            <TextInput
+              style={[styles.input, customStyleMail]}
+              placeholder="Адреса електронної пошти"
+              onFocus={() => setFocusMail(true)}
+              onBlur={() => setFocusMail(false)}
+              inputMode="email"
+            ></TextInput>
+            <TextInput
+              style={[styles.input, { marginBottom: 30 }, customStylePass]}
+              placeholder="Пароль"
+              onFocus={() => setFocusPass(true)}
+              onBlur={() => setFocusPass(false)}
+            ></TextInput>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.textButton}>Увійти</Text>
+            </TouchableOpacity>
+            <Button title="Немає акаунту? Зареєструватися" />
+          </SafeAreaView>
         </View>
       </ImageBackground>
     </View>
@@ -38,7 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   wrap: {
-    position: 'relative',
     width: '100%',
     height: 500,
     paddingTop: 70,
@@ -53,5 +70,32 @@ const styles = StyleSheet.create({
     letterSpacing: 0.01,
     lineHeight: 35.16,
     textAlign: 'center',
+  },
+  input: {
+    height: 35,
+    paddingHorizontal: 16,
+    marginBottom: 10,
+    backgroundColor: '#f6f6f6',
+    borderColor: '#e8e8e8',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+  inputFocus: {
+    borderColor: '#ff6c00',
+  },
+  button: {
+    height: 40,
+    marginBottom: 16,
+    alignItems: 'center',
+    backgroundColor: '#ff6c00',
+    paddingVertical: 10,
+    paddingHorizontal: 80,
+    borderRadius: 100,
+  },
+  textButton: {
+    color: '#fff',
+    fontSize: 16,
+    lineHeight: 19,
   },
 });
