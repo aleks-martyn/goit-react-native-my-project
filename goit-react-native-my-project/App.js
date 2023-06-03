@@ -6,11 +6,12 @@ import LoginScreen from './src/Screens/LoginScreen/LoginScreen';
 import PostScreen from './src/Screens/PostsScreen/PostScreen';
 
 export default function App() {
+
   return (
     <View style={styles.container}>
-      <PostScreen>
+      <LoginScreen>
         <StatusBar style="auto" />
-      </PostScreen>
+      </LoginScreen>
     </View>
   );
 }
