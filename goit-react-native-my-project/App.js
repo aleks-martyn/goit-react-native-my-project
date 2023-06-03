@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import RegistrationScreen from './src/Screens/RegistrationScreen/RegistrationScreen';
 import LoginScreen from './src/Screens/LoginScreen/LoginScreen';
+import PostScreen from './src/Screens/PostsScreen/PostScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginScreen>
+      <PostScreen>
         <StatusBar style="auto" />
-      </LoginScreen>
+      </PostScreen>
     </View>
   );
 }
