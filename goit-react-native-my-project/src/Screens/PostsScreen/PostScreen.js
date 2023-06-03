@@ -13,12 +13,13 @@ export default function PostScreen() {
 
 const styles = StyleSheet.create({
   wrapper: {
+    width: '100%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   header: {
-    width: 320,
+    width: '100%',
     height: 88,
     paddingBottom: 11,
     backgroundColor: '#fff',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   footer: {
-    width: 320,
+    width: '100%',
     height: 83,
     backgroundColor: '#fff',
     shadowOffset: {
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
   },
   title: {
-      fontSize: 17,
-      lineHeight: 22,
-      color: '#212121',
+    fontSize: 17,
+    lineHeight: 22,
+    color: '#212121',
   },
 });
