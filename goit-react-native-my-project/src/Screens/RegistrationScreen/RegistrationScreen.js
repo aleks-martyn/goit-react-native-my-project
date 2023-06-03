@@ -23,7 +23,7 @@ export default function RegistrationScreen() {
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
   return (
-    <View>
+    <View style={styles.wrapper}>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.wrap}>
           <View style={styles.userPicture}>
@@ -53,6 +53,7 @@ export default function RegistrationScreen() {
               placeholder="Пароль"
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
+              secureTextEntry
             ></TextInput>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Зареєструватися</Text>
@@ -66,8 +67,12 @@ export default function RegistrationScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    height: '100%',
+  },
   image: {
-    width: 320,
+    width: '100%',
     height: '100%',
     flex: 1,
     flexDirection: 'column',
