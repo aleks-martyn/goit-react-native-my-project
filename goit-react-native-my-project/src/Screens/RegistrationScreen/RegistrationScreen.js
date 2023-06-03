@@ -9,9 +9,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
-import { useState } from 'react';
+
 
 export default function RegistrationScreen() {
   const [focusLog, setFocusLog] = useState(false);
