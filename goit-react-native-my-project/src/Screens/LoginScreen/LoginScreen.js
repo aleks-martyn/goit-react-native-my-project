@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.01,
     lineHeight: 35.16,
     textAlign: 'center',
+    color: '#212121',
   },
   input: {
     height: 35,
