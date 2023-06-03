@@ -14,8 +14,12 @@ import UnionIcon from '../../images/Union.png';
 import { useState } from 'react';
 
 export default function RegistrationScreen() {
-  const [focus, setFocus] = useState(false);
-  const customStyle = focus ? styles.inputFocus : styles.input;
+  const [focusLog, setFocusLog] = useState(false);
+  const [focusMail, setFocusMail] = useState(false);
+  const [focusPass, setFocusPass] = useState(false);
+  const customStyleLog = focusLog ? styles.inputFocus : styles.input;
+  const customStyleMail = focusMail ? styles.inputFocus : styles.input;
+  const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
   return (
     <View>
@@ -31,21 +35,23 @@ export default function RegistrationScreen() {
           <Text style={styles.title}>Реєстрація</Text>
           <SafeAreaView>
             <TextInput
-              style={[styles.input, customStyle]}
+              style={[styles.input, customStyleLog]}
               placeholder="Логін"
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
+              onFocus={() => setFocusLog(true)}
+              onBlur={() => setFocusLog(false)}
             ></TextInput>
             <TextInput
-              style={[styles.input, customStyle]}
+              style={[styles.input, customStyleMail]}
               placeholder="Адреса електронної пошти"
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
+              onFocus={() => setFocusMail(true)}
+              onBlur={() => setFocusMail(false)}
               inputMode="email"
             ></TextInput>
             <TextInput
-              style={[styles.input, { marginBottom: 30 }]}
+              style={[styles.input, { marginBottom: 30 }, customStylePass]}
               placeholder="Пароль"
+              onFocus={() => setFocusPass(true)}
+              onBlur={() => setFocusPass(false)}
             ></TextInput>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Зареєструватися</Text>
