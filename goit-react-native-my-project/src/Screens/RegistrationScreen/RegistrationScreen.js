@@ -13,7 +13,6 @@ import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
 
-
 export default function RegistrationScreen() {
   const [focusLog, setFocusLog] = useState(false);
   const [focusMail, setFocusMail] = useState(false);
@@ -40,21 +39,21 @@ export default function RegistrationScreen() {
               placeholder="Логін"
               onFocus={() => setFocusLog(true)}
               onBlur={() => setFocusLog(false)}
-            ></TextInput>
+            />
             <TextInput
               style={[styles.input, customStyleMail]}
               placeholder="Адреса електронної пошти"
               onFocus={() => setFocusMail(true)}
               onBlur={() => setFocusMail(false)}
               inputMode="email"
-            ></TextInput>
+            />
             <TextInput
               style={[styles.input, { marginBottom: 30 }, customStylePass]}
               placeholder="Пароль"
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
               secureTextEntry
-            ></TextInput>
+            />
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Зареєструватися</Text>
             </TouchableOpacity>
@@ -128,6 +127,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 8,
+    fontSize: 16,
+    lineHeight: 19,
   },
   inputFocus: {
     borderColor: '#ff6c00',
