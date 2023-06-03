@@ -17,30 +17,47 @@ export default function LoginScreen() {
   const customStyleMail = focusMail ? styles.inputFocus : styles.input;
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const onPressShowBtn = () => {
+    if (secureTextEntry) {
+      setSecureTextEntry(false);
+    } else {
+      setSecureTextEntry(true);
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.wrap}>
           <Text style={styles.title}>Увійти</Text>
-          <SafeAreaView>
+          <SafeAreaView style={styles.form}>
             <TextInput
               style={[styles.input, customStyleMail]}
               placeholder="Адреса електронної пошти"
               onFocus={() => setFocusMail(true)}
               onBlur={() => setFocusMail(false)}
               inputMode="email"
-            ></TextInput>
+            />
             <TextInput
               style={[styles.input, customStylePass]}
               placeholder="Пароль"
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
-              secureTextEntry
-            ></TextInput>
+              secureTextEntry={secureTextEntry}
+            />
+            <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
+              <Text style={styles.textShowBtn}>Показати</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Увійти</Text>
             </TouchableOpacity>
-            <Button title="Немає акаунту? Зареєструватися" />
+            <TouchableOpacity>
+              <Text style={styles.textShowBtn}>
+                Немає акаунту? Зареєструватися
+              </Text>
+            </TouchableOpacity>
           </SafeAreaView>
         </View>
       </ImageBackground>
@@ -68,6 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    alignItems: 'center',
   },
   title: {
     marginBottom: 15,
@@ -86,6 +104,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 8,
+    fontSize: 16,
+    lineHeight: 19,
   },
   inputFocus: {
     borderColor: '#ff6c00',
@@ -104,5 +124,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     lineHeight: 19,
+  },
+  form: {
+    position: 'relative',
+  },
+  showBtn: {
+    position: 'absolute',
+    top: 54,
+    right: 18,
+  },
+  textShowBtn: {
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#1B4371',
   },
 });
