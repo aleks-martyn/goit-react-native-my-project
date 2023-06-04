@@ -18,12 +18,16 @@ export default function LoginScreen() {
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [showText, setShowText] = useState('Показати');
+  const [password, setPassword] = useState('');
 
   const onPressShowBtn = () => {
-    if (secureTextEntry) {
+    if (password.trim() !== '' && secureTextEntry) {
       setSecureTextEntry(false);
+      setShowText('Приховати');
     } else {
       setSecureTextEntry(true);
+      setShowText('Показати');
     }
   };
 
@@ -43,12 +47,18 @@ export default function LoginScreen() {
             <TextInput
               style={[styles.input, customStylePass]}
               placeholder="Пароль"
+              value={password}
+              onChangeText={setPassword}
               onFocus={() => setFocusPass(true)}
-              onBlur={() => setFocusPass(false)}
+              onBlur={() => {
+                setFocusPass(false);
+                setSecureTextEntry(true);
+                setShowText('Показати');
+              }}
               secureTextEntry={secureTextEntry}
             />
             <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
-              <Text style={styles.textShowBtn}>Показати</Text>
+              <Text style={styles.textShowBtn}>{showText}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Увійти</Text>
