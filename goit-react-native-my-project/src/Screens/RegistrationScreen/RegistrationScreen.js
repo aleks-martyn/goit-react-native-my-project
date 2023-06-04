@@ -21,6 +21,20 @@ export default function RegistrationScreen() {
   const customStyleMail = focusMail ? styles.inputFocus : styles.input;
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [showText, setShowText] = useState('Показати');
+  const [password, setPassword] = useState('');
+
+  const onPressShowBtn = () => {
+    if (password.trim() !== '' && secureTextEntry) {
+      setSecureTextEntry(false);
+      setShowText('Приховати');
+    } else {
+      setSecureTextEntry(true);
+      setShowText('Показати');
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
@@ -48,16 +62,24 @@ export default function RegistrationScreen() {
               inputMode="email"
             />
             <TextInput
-              style={[styles.input, { marginBottom: 30 }, customStylePass]}
+              style={[styles.input, customStylePass]}
               placeholder="Пароль"
+              name='password'
+              value={password}
+              onChangeText={setPassword}
               onFocus={() => setFocusPass(true)}
               onBlur={() => setFocusPass(false)}
-              secureTextEntry
+              secureTextEntry={secureTextEntry}
             />
+            <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
+              <Text style={styles.textShowBtn}>{showText}</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.textButton}>Зареєструватися</Text>
             </TouchableOpacity>
-            <Button title="Вже є акаунт? Увійти" />
+            <TouchableOpacity>
+              <Text style={styles.textLogIn}>Вже є акаунт? Увійти</Text>
+            </TouchableOpacity>
           </SafeAreaView>
         </View>
       </ImageBackground>
@@ -135,6 +157,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 40,
+    marginTop: 25,
     marginBottom: 16,
     alignItems: 'center',
     backgroundColor: '#ff6c00',
@@ -146,5 +169,21 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     lineHeight: 19,
+  },
+  textLogIn: {
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#1B4371',
+    textAlign: 'center',
+  },
+  showBtn: {
+    position: 'absolute',
+    top: 98,
+    right: 18,
+  },
+  textShowBtn: {
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#1B4371',
   },
 });
