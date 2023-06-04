@@ -64,11 +64,14 @@ export default function RegistrationScreen() {
             <TextInput
               style={[styles.input, customStylePass]}
               placeholder="Пароль"
-              name='password'
               value={password}
               onChangeText={setPassword}
               onFocus={() => setFocusPass(true)}
-              onBlur={() => setFocusPass(false)}
+              onBlur={() => {
+                setFocusPass(false);
+                setSecureTextEntry(true);
+                setShowText('Показати');
+              }}
               secureTextEntry={secureTextEntry}
             />
             <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
