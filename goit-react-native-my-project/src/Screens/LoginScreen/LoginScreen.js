@@ -4,6 +4,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -31,46 +33,52 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={styles.wrapper}>
-      <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
-        <View style={styles.wrap}>
-          <Text style={styles.title}>Увійти</Text>
-          <SafeAreaView style={styles.form}>
-            <TextInput
-              style={[styles.input, customStyleMail]}
-              placeholder="Адреса електронної пошти"
-              onFocus={() => setFocusMail(true)}
-              onBlur={() => setFocusMail(false)}
-              inputMode="email"
-            />
-            <TextInput
-              style={[styles.input, customStylePass]}
-              placeholder="Пароль"
-              value={password}
-              onChangeText={setPassword}
-              onFocus={() => setFocusPass(true)}
-              onBlur={() => {
-                setFocusPass(false);
-                setSecureTextEntry(true);
-                setShowText('Показати');
-              }}
-              secureTextEntry={secureTextEntry}
-            />
-            <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
-              <Text style={styles.textShowBtn}>{showText}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Увійти</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.textShowBtn}>
-                Немає акаунту? Зареєструватися
-              </Text>
-            </TouchableOpacity>
-          </SafeAreaView>
-        </View>
-      </ImageBackground>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.wrapper}>
+        <ImageBackground
+          source={BgImage}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <View style={styles.wrap}>
+            <Text style={styles.title}>Увійти</Text>
+            <SafeAreaView style={styles.form}>
+              <TextInput
+                style={[styles.input, customStyleMail]}
+                placeholder="Адреса електронної пошти"
+                onFocus={() => setFocusMail(true)}
+                onBlur={() => setFocusMail(false)}
+                inputMode="email"
+              />
+              <TextInput
+                style={[styles.input, customStylePass]}
+                placeholder="Пароль"
+                value={password}
+                onChangeText={setPassword}
+                onFocus={() => setFocusPass(true)}
+                onBlur={() => {
+                  setFocusPass(false);
+                  setSecureTextEntry(true);
+                  setShowText('Показати');
+                }}
+                secureTextEntry={secureTextEntry}
+              />
+              <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
+                <Text style={styles.textShowBtn}>{showText}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.textButton}>Увійти</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textShowBtn}>
+                  Немає акаунту? Зареєструватися
+                </Text>
+              </TouchableOpacity>
+            </SafeAreaView>
+          </View>
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
