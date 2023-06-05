@@ -5,6 +5,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -35,57 +37,63 @@ export default function RegistrationScreen() {
   };
 
   return (
-    <View style={styles.wrapper}>
-      <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
-        <View style={styles.wrap}>
-          <View style={styles.userPicture}>
-            <TouchableOpacity>
-              <View style={styles.wrapUnion}>
-                <Image source={UnionIcon} style={{ width: 13, height: 13 }} />
-              </View>
-            </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.wrapper}>
+        <ImageBackground
+          source={BgImage}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <View style={styles.wrap}>
+            <View style={styles.userPicture}>
+              <TouchableOpacity>
+                <View style={styles.wrapUnion}>
+                  <Image source={UnionIcon} style={{ width: 13, height: 13 }} />
+                </View>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>Реєстрація</Text>
+            <SafeAreaView>
+              <TextInput
+                style={[styles.input, customStyleLog]}
+                placeholder="Логін"
+                onFocus={() => setFocusLog(true)}
+                onBlur={() => setFocusLog(false)}
+              />
+              <TextInput
+                style={[styles.input, customStyleMail]}
+                placeholder="Адреса електронної пошти"
+                onFocus={() => setFocusMail(true)}
+                onBlur={() => setFocusMail(false)}
+                inputMode="email"
+              />
+              <TextInput
+                style={[styles.input, customStylePass]}
+                placeholder="Пароль"
+                value={password}
+                onChangeText={setPassword}
+                onFocus={() => setFocusPass(true)}
+                onBlur={() => {
+                  setFocusPass(false);
+                  setSecureTextEntry(true);
+                  setShowText('Показати');
+                }}
+                secureTextEntry={secureTextEntry}
+              />
+              <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
+                <Text style={styles.textShowBtn}>{showText}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.textButton}>Зареєструватися</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.textLogIn}>Вже є акаунт? Увійти</Text>
+              </TouchableOpacity>
+            </SafeAreaView>
           </View>
-          <Text style={styles.title}>Реєстрація</Text>
-          <SafeAreaView>
-            <TextInput
-              style={[styles.input, customStyleLog]}
-              placeholder="Логін"
-              onFocus={() => setFocusLog(true)}
-              onBlur={() => setFocusLog(false)}
-            />
-            <TextInput
-              style={[styles.input, customStyleMail]}
-              placeholder="Адреса електронної пошти"
-              onFocus={() => setFocusMail(true)}
-              onBlur={() => setFocusMail(false)}
-              inputMode="email"
-            />
-            <TextInput
-              style={[styles.input, customStylePass]}
-              placeholder="Пароль"
-              value={password}
-              onChangeText={setPassword}
-              onFocus={() => setFocusPass(true)}
-              onBlur={() => {
-                setFocusPass(false);
-                setSecureTextEntry(true);
-                setShowText('Показати');
-              }}
-              secureTextEntry={secureTextEntry}
-            />
-            <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
-              <Text style={styles.textShowBtn}>{showText}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Зареєструватися</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.textLogIn}>Вже є акаунт? Увійти</Text>
-            </TouchableOpacity>
-          </SafeAreaView>
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
