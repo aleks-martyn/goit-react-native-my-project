@@ -42,7 +42,11 @@ export default function RegistrationScreen() {
   };
 
   const onRegistration = () => {
-    Alert.alert('Credentials', `${login} + ${email} + ${password}`);
+    if (login === '' || email === '' || password === '') {
+      Alert.alert('All fields are required!');
+      return;
+    }
+
     console.log(login, email, password);
     setLogin('');
     setEmail('');
