@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ff6c00',
     paddingVertical: 10,
-    paddingHorizontal: 0,
+    paddingHorizontal: 80,
     borderRadius: 100,
   },
   textButton: {
