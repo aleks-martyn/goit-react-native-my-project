@@ -44,6 +44,9 @@ export default function RegistrationScreen() {
   const onRegistration = () => {
     Alert.alert('Credentials', `${login} + ${email} + ${password}`);
     console.log(login, email, password);
+    setLogin('');
+    setEmail('');
+    setPassword('');
   };
 
   const onLogin = () => {
