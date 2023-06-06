@@ -8,6 +8,7 @@ import {
   Keyboard,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
@@ -15,11 +16,14 @@ import BgImage from '../../images/PhotoBG2.jpg';
 export default function LoginScreen() {
   const [focusMail, setFocusMail] = useState(false);
   const [focusPass, setFocusPass] = useState(false);
+
   const customStyleMail = focusMail ? styles.inputFocus : styles.input;
   const customStylePass = focusPass ? styles.inputFocus : styles.input;
 
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [showText, setShowText] = useState('Показати');
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onPressShowBtn = () => {
@@ -30,6 +34,11 @@ export default function LoginScreen() {
       setSecureTextEntry(true);
       setShowText('Показати');
     }
+  };
+
+  const onRegistration = () => {
+    Alert.alert('Credentials', `${email} + ${password}`);
+    console.log(email, password);
   };
 
   return (
@@ -43,31 +52,38 @@ export default function LoginScreen() {
           <View style={styles.wrap}>
             <Text style={styles.title}>Увійти</Text>
             <SafeAreaView style={styles.form}>
-              <TextInput
-                style={[styles.input, customStyleMail]}
-                placeholder="Адреса електронної пошти"
-                onFocus={() => setFocusMail(true)}
-                onBlur={() => setFocusMail(false)}
-                inputMode="email"
-              />
-              <TextInput
-                style={[styles.input, customStylePass]}
-                placeholder="Пароль"
-                value={password}
-                onChangeText={setPassword}
-                onFocus={() => setFocusPass(true)}
-                onBlur={() => {
-                  setFocusPass(false);
-                  setSecureTextEntry(true);
-                  setShowText('Показати');
-                }}
-                secureTextEntry={secureTextEntry}
-              />
+              <View>
+                <TextInput
+                  style={[styles.input, customStyleMail]}
+                  placeholder="Адреса електронної пошти"
+                  value={email}
+                  onChangeText={setEmail}
+                  onFocus={() => setFocusMail(true)}
+                  onBlur={() => setFocusMail(false)}
+                  inputMode="email"
+                />
+                <TextInput
+                  style={[styles.input, customStylePass]}
+                  placeholder="Пароль"
+                  value={password}
+                  onChangeText={setPassword}
+                  onFocus={() => setFocusPass(true)}
+                  onBlur={() => {
+                    setFocusPass(false);
+                    setSecureTextEntry(true);
+                    setShowText('Показати');
+                  }}
+                  secureTextEntry={secureTextEntry}
+                />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={onRegistration}
+                >
+                  <Text style={styles.textButton}>Увійти</Text>
+                </TouchableOpacity>
+              </View>
               <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
                 <Text style={styles.textShowBtn}>{showText}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.textButton}>Увійти</Text>
               </TouchableOpacity>
               <TouchableOpacity>
                 <Text style={styles.textShowBtn}>
