@@ -37,7 +37,10 @@ export default function LoginScreen() {
   };
 
   const onLogin = () => {
-    Alert.alert('Credentials', `${email} + ${password}`);
+    if (email === '' || password === '') {
+      Alert.alert('All fields are required!');
+      return;
+    }
     console.log(email, password);
     setEmail('');
     setPassword('');
@@ -81,10 +84,7 @@ export default function LoginScreen() {
                   }}
                   secureTextEntry={secureTextEntry}
                 />
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={onLogin}
-                >
+                <TouchableOpacity style={styles.button} onPress={onLogin}>
                   <Text style={styles.textButton}>Увійти</Text>
                 </TouchableOpacity>
               </View>
