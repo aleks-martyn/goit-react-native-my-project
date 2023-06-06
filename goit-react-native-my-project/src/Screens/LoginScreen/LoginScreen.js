@@ -36,9 +36,13 @@ export default function LoginScreen() {
     }
   };
 
-  const onRegistration = () => {
+  const onLogin = () => {
     Alert.alert('Credentials', `${email} + ${password}`);
     console.log(email, password);
+  };
+
+  const onRegistration = () => {
+    console.log('RegistrationScreen Page');
   };
 
   return (
@@ -77,7 +81,7 @@ export default function LoginScreen() {
                 />
                 <TouchableOpacity
                   style={styles.button}
-                  onPress={onRegistration}
+                  onPress={onLogin}
                 >
                   <Text style={styles.textButton}>Увійти</Text>
                 </TouchableOpacity>
@@ -85,7 +89,7 @@ export default function LoginScreen() {
               <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
                 <Text style={styles.textShowBtn}>{showText}</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onRegistration}>
                 <Text style={styles.textShowBtn}>
                   Немає акаунту? Зареєструватися
                 </Text>
