@@ -1,5 +1,4 @@
 import {
-  Button,
   ImageBackground,
   Image,
   SafeAreaView,
@@ -11,7 +10,6 @@ import {
   TouchableOpacity,
   View,
   Alert,
-  Pressable,
 } from 'react-native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
@@ -46,6 +44,10 @@ export default function RegistrationScreen() {
   const onRegistration = () => {
     Alert.alert('Credentials', `${login} + ${email} + ${password}`);
     console.log(login, email, password);
+  };
+
+  const onLogin = () => {
+    console.log('LoginScreen Page');
   };
 
   return (
@@ -107,7 +109,7 @@ export default function RegistrationScreen() {
               <TouchableOpacity style={styles.showBtn} onPress={onPressShowBtn}>
                 <Text style={styles.textShowBtn}>{showText}</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onLogin}>
                 <Text style={styles.textLogIn}>Вже є акаунт? Увійти</Text>
               </TouchableOpacity>
             </SafeAreaView>
