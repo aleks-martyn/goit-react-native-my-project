@@ -31,6 +31,10 @@ export default function RegistrationScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const addPhoto = () => {
+    console.log('Add a photo');
+  }
+
   const onPressShowBtn = () => {
     if (password.trim() !== '' && secureTextEntry) {
       setSecureTextEntry(false);
@@ -67,7 +71,7 @@ export default function RegistrationScreen() {
         >
           <View style={styles.wrap}>
             <View style={styles.userPicture}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={addPhoto}>
                 <View style={styles.wrapUnion}>
                   <Image source={UnionIcon} style={{ width: 13, height: 13 }} />
                 </View>
