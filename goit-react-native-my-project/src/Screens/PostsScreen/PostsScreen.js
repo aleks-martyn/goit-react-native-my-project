@@ -2,7 +2,7 @@ import { View, StyleSheet, Text } from 'react-native';
 
 export default function PostsScreen() {
   return (
-    <View style={styles.wrapper}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Публікації</Text>
       </View>
@@ -12,8 +12,9 @@ export default function PostsScreen() {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     width: '100%',
+    height: '100%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
