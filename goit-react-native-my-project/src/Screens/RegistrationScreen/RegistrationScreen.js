@@ -57,7 +57,7 @@ export default function RegistrationScreen() {
     setLogin('');
     setEmail('');
     setPassword('');
-    navigation.navigate('Home');
+    navigation.navigate('Home', { screen: 'Posts' });
   };
 
   const onLogin = () => navigation.navigate('Login');
