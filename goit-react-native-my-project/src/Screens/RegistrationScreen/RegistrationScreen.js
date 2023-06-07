@@ -55,10 +55,11 @@ export default function RegistrationScreen({ navigation }) {
     setLogin('');
     setEmail('');
     setPassword('');
+    navigation.navigate('Home');
   };
 
   const onLogin = () => navigation.navigate('Login');
-  
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
