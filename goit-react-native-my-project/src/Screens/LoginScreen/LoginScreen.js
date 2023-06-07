@@ -44,10 +44,11 @@ export default function LoginScreen({ navigation }) {
     console.log(email, password);
     setEmail('');
     setPassword('');
+    navigation.navigate('Home');
   };
 
   const onRegistration = () => navigation.navigate('Registration');
-  
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.wrapper}>
