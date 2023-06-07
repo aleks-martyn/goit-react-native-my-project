@@ -23,12 +23,14 @@ export default function App() {
       >
         <MainStack.Screen name="Registration" component={RegistrationScreen} />
         <MainStack.Screen name="Login" component={LoginScreen} />
-        <MainStack.Screen name="Posts" component={PostsScreen} />
-        <MainStack.Screen name="Home" component={Home} />
-        <MainStack.Screen name="Map" component={MapScreen} />
-        <MainStack.Screen name="Profile" component={ProfileScreen} />
-        <MainStack.Screen name="CreatePosts" component={CreatePostsScreen} />
+        <MainStack.Group initialRouteName="Posts">
+          <MainStack.Screen name="Home" component={Home} />
+          <MainStack.Screen name="Posts" component={PostsScreen} />
+          <MainStack.Screen name="CreatePosts" component={CreatePostsScreen} />
+          <MainStack.Screen name="Profile" component={ProfileScreen} />
+        </MainStack.Group>
         <MainStack.Screen name="Comments" component={CommentsScreen} />
+        <MainStack.Screen name="Map" component={MapScreen} />
       </MainStack.Navigator>
     </NavigationContainer>
   );
