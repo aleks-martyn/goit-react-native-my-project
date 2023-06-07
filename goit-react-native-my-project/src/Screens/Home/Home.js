@@ -1,7 +1,14 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
-  return <View style={styles.container}><Text>Home</Text></View>;
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.container}>
+      <Text>Home</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
