@@ -15,7 +15,7 @@ import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
 
-export default function RegistrationScreen() {
+export default function RegistrationScreen({ navigation }) {
   const [focusLog, setFocusLog] = useState(false);
   const [focusMail, setFocusMail] = useState(false);
   const [focusPass, setFocusPass] = useState(false);
@@ -33,7 +33,7 @@ export default function RegistrationScreen() {
 
   const addPhoto = () => {
     console.log('Add a photo');
-  }
+  };
 
   const onPressShowBtn = () => {
     if (password.trim() !== '' && secureTextEntry) {
@@ -57,13 +57,11 @@ export default function RegistrationScreen() {
     setPassword('');
   };
 
-  const onLogin = () => {
-    console.log('LoginScreen Page');
-  };
-
+  const onLogin = () => navigation.navigate('Login');
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.wrapper}>
+      <View style={styles.container}>
         <ImageBackground
           source={BgImage}
           resizeMode="cover"
@@ -132,9 +130,12 @@ export default function RegistrationScreen() {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     width: '100%',
     height: '100%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     width: '100%',
