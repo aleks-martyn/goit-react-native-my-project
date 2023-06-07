@@ -11,11 +11,13 @@ import {
   View,
   Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
 
-export default function RegistrationScreen({ navigation }) {
+export default function RegistrationScreen() {
+  const navigation = useNavigation();
   const [focusLog, setFocusLog] = useState(false);
   const [focusMail, setFocusMail] = useState(false);
   const [focusPass, setFocusPass] = useState(false);
