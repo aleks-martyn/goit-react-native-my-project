@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [focusMail, setFocusMail] = useState(false);
   const [focusPass, setFocusPass] = useState(false);
 
@@ -46,10 +46,8 @@ export default function LoginScreen() {
     setPassword('');
   };
 
-  const onRegistration = () => {
-    console.log('RegistrationScreen Page');
-  };
-
+  const onRegistration = () => navigation.navigate('Registration');
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.wrapper}>
