@@ -7,6 +7,7 @@ import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
 import PostsIcon from '../../images/grid.png';
 import CreateIcon from '../../images/union-white.png';
 import UserIcon from '../../images/user.png';
+import LogOutIcon from '../../images/log-out.png';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,13 @@ export default function Home() {
         component={PostsScreen}
         options={{
           title: 'Публікації',
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <View style={styles.logOutStyle}>
+                <Image source={LogOutIcon} style={{ width: 24, height: 24 }} />
+              </View>
+            </TouchableOpacity>
+          ),
           tabBarButton: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Posts')}>
               <View style={styles.tabBarPostsStyle}>
@@ -54,7 +62,6 @@ export default function Home() {
               </View>
             </TouchableOpacity>
           ),
-          tabBarItemStyle: { width: 100 },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -118,4 +125,5 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingLeft: 10,
   },
+  logOutStyle: { marginRight: 16, marginBottom: 10, marginTop: 11 },
 });
