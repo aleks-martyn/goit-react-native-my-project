@@ -11,10 +11,26 @@ export default function Home() {
   const navigation = useNavigation();
 
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Posts" component={PostsScreen}></Tab.Screen>
-      <Tab.Screen name="CreatePosts" component={CreatePostsScreen}></Tab.Screen>
-      <Tab.Screen name="Profile" component={ProfileScreen}></Tab.Screen>
+    <Tab.Navigator initialRouteName="Posts">
+      <Tab.Screen
+        name="Posts"
+        component={PostsScreen}
+        options={{
+          title: 'Публікації',
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="CreatePosts"
+        component={CreatePostsScreen}
+        options={{
+          title: 'Створити публікацію',
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        screenOptions={{ headerShown: false }}
+        name="Profile"
+        component={ProfileScreen}
+      ></Tab.Screen>
     </Tab.Navigator>
   );
 }
