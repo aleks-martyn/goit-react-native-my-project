@@ -54,6 +54,7 @@ export default function Home() {
               </View>
             </TouchableOpacity>
           ),
+          tabBarItemStyle: { width: 100 },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -69,7 +70,7 @@ export default function Home() {
                 <View style={styles.createPostBtn}>
                   <Image
                     source={CreateIcon}
-                    style={{ width: 13, height: 13, }}
+                    style={{ width: 13, height: 13 }}
                   />
                 </View>
               </View>
@@ -78,23 +79,30 @@ export default function Home() {
         }}
       ></Tab.Screen>
       <Tab.Screen
-        options={{ headerShown: false }}
         name="Profile"
         component={ProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+              <View style={styles.tabBarUserStyle}>
+                <Image source={UserIcon} style={{ width: 24, height: 24 }} />
+              </View>
+            </TouchableOpacity>
+          ),
+        }}
       ></Tab.Screen>
     </Tab.Navigator>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  tabBarPostsStyle: {
+    paddingTop: 17,
+    minWidth: 106,
+    alignItems: 'flex-end',
+    paddingRight: 10,
   },
-  tabBarPostsStyle: { paddingTop: 17, flex: 1, },
   createPostBtn: {
     width: 70,
     height: 40,
@@ -103,5 +111,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff6c00',
     borderRadius: 100,
   },
-  tabBarCreateStyle: {paddingTop: 9, flex: 1,}
+  tabBarCreateStyle: { paddingTop: 9, minWidth: 106, alignItems: 'center' },
+  tabBarUserStyle: {
+    paddingTop: 17,
+    minWidth: 106,
+    alignItems: 'flex-start',
+    paddingLeft: 10,
+  },
 });
