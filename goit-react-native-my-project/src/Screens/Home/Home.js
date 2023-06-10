@@ -19,6 +19,18 @@ const styleScreens = {
     shadowColor: '#000',
     shadowRadius: 0,
   },
+  tabBarStyle: {
+    height: 83,
+    backgroundColor: '#fff',
+    shadowOffset: {
+      width: 0,
+      height: -0.5,
+    },
+    shadowOpacity: 0.3,
+    shadowColor: '#000',
+    shadowRadius: 0,
+  },
+  tabBarShowLabel: false,
 };
 
 export default function Home() {
