@@ -1,13 +1,19 @@
 import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import PostsScreen from './src/Screens/PostsScreen/PostsScreen';
+import ProfileScreen from './src/Screens/ProfileScreen/ProfileScreen';
+import CreatePostsScreen from './src/Screens/CreatePostsScreen/CreatePostsScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function Home() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <Tab.Navigator>
       <Text>Home</Text>
-    </View>
+    </Tab.Navigator>
   );
 }
 
