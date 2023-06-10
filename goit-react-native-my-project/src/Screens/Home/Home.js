@@ -73,7 +73,10 @@ export default function Home() {
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Posts')}>
               <View style={styles.BackArrowStyle}>
-                <Image source={BackArrowIcon} style={{ width: 24, height: 24 }} />
+                <Image
+                  source={BackArrowIcon}
+                  style={{ width: 24, height: 24 }}
+                />
               </View>
             </TouchableOpacity>
           ),
@@ -133,6 +136,18 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingLeft: 10,
   },
-  logOutStyle: { marginRight: 16 },
-  BackArrowStyle: { marginLeft: 16 },
+  logOutStyle: {
+    width: 60,
+    height: 70,
+    paddingRight: 16,
+    paddingLeft: 20,
+    paddingTop: 24,
+  },
+  BackArrowStyle: {
+    width: 60,
+    height: 70,
+    paddingRight: 20,
+    paddingLeft: 16,
+    paddingTop: 24,
+  },
 });
