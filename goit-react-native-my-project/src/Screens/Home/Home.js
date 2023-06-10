@@ -7,11 +7,25 @@ import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
 
 const Tab = createBottomTabNavigator();
 
+const styleScreens = {
+  headerStyle: {
+    height: 88,
+    backgroundColor: '#fff',
+    shadowOffset: {
+      width: 0,
+      height: 0.5,
+    },
+    shadowOpacity: 0.3,
+    shadowColor: '#000',
+    shadowRadius: 0,
+  },
+};
+
 export default function Home() {
   const navigation = useNavigation();
 
   return (
-    <Tab.Navigator initialRouteName="Posts">
+    <Tab.Navigator initialRouteName="Posts" screenOptions={styleScreens}>
       <Tab.Screen
         name="Posts"
         component={PostsScreen}
@@ -27,7 +41,7 @@ export default function Home() {
         }}
       ></Tab.Screen>
       <Tab.Screen
-        screenOptions={{ headerShown: false }}
+        options={{ headerShown: false }}
         name="Profile"
         component={ProfileScreen}
       ></Tab.Screen>
