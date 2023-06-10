@@ -3,10 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 export default function PostsScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Публікації</Text>
-      </View>
-      <View style={styles.footer}></View>
+      
     </View>
   );
 }
