@@ -68,7 +68,7 @@ export default function Home() {
             marginLeft: 20,
           },
         }}
-      ></Tab.Screen>
+      />
       <Tab.Screen
         name="CreatePosts"
         component={CreatePostsScreen}
@@ -94,7 +94,7 @@ export default function Home() {
             marginHorizontal: 5,
           },
         }}
-      ></Tab.Screen>
+      />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
@@ -111,7 +111,7 @@ export default function Home() {
             marginLeft: 10,
           },
         }}
-      ></Tab.Screen>
+      />
     </Tab.Navigator>
   );
 }
