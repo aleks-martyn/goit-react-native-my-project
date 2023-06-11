@@ -6,7 +6,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
-import UserIcon from '../../images/user.png';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,6 +61,13 @@ export default function Home() {
           tabBarIcon: ({ color }) => (
             <Feather name="grid" size={24} color={color} />
           ),
+          tabBarItemStyle: {
+            height: 50,
+            borderRadius: '50%',
+            marginTop: 9,
+            marginRight: 10,
+            marginLeft: 20,
+          },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -82,6 +88,12 @@ export default function Home() {
           tabBarIcon: ({ color }) => (
             <Ionicons name="add" size={24} color={color} />
           ),
+          tabBarItemStyle: {
+            height: 50,
+            borderRadius: '50%',
+            marginTop: 9,
+            marginHorizontal: 5,
+          },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -89,49 +101,18 @@ export default function Home() {
         component={ProfileScreen}
         options={{
           headerShown: false,
-          tabBarButton: ({ color }) => (
+          tabBarIcon: ({ color }) => (
             <Feather name="user" size={24} color={color} />
           ),
+          tabBarItemStyle: {
+            height: 50,
+            borderRadius: '50%',
+            marginTop: 9,
+            marginRight: 20,
+            marginLeft: 10,
+          },
         }}
       ></Tab.Screen>
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBarPostsStyle: {
-    paddingTop: 17,
-    minWidth: 106,
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
-  createPostBtn: {
-    width: 70,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ff6c00',
-    borderRadius: 100,
-  },
-  tabBarCreateStyle: { paddingTop: 9, minWidth: 106, alignItems: 'center' },
-  tabBarUserStyle: {
-    paddingTop: 17,
-    minWidth: 106,
-    alignItems: 'flex-start',
-    paddingLeft: 10,
-  },
-  logOutStyle: {
-    width: 60,
-    height: 70,
-    paddingRight: 16,
-    paddingLeft: 20,
-    paddingTop: 24,
-  },
-  BackArrowStyle: {
-    width: 60,
-    height: 70,
-    paddingRight: 20,
-    paddingLeft: 16,
-    paddingTop: 24,
-  },
-});
