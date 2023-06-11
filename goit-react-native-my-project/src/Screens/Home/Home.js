@@ -1,4 +1,3 @@
-import { StyleSheet, Image, Button, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Feather } from '@expo/vector-icons';
