@@ -6,7 +6,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
-import CreateIcon from '../../images/union-white.png';
 import UserIcon from '../../images/user.png';
 
 const Tab = createBottomTabNavigator();
@@ -80,8 +79,8 @@ export default function Home() {
               />
             </TouchableOpacity>
           ),
-          tabBarIcon: ({color}) => (
-            <Ionicons name='add' size={24} color={color}/>
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="add" size={24} color={color} />
           ),
         }}
       ></Tab.Screen>
@@ -90,12 +89,8 @@ export default function Home() {
         component={ProfileScreen}
         options={{
           headerShown: false,
-          tabBarButton: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-              <View style={styles.tabBarUserStyle}>
-                <Image source={UserIcon} style={{ width: 24, height: 24 }} />
-              </View>
-            </TouchableOpacity>
+          tabBarButton: ({ color }) => (
+            <Feather name="user" size={24} color={color} />
           ),
         }}
       ></Tab.Screen>
