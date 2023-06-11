@@ -6,7 +6,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
-import PostsIcon from '../../images/grid.png';
 import CreateIcon from '../../images/union-white.png';
 import UserIcon from '../../images/user.png';
 
@@ -37,6 +36,8 @@ const styleScreens = {
   },
   tabBarShowLabel: false,
   tabBarActiveBackgroundColor: '#FF6C00',
+  tabBarInactiveTintColor: '#212121',
+  tabBarActiveTintColor: '#fff',
 };
 
 export default function Home() {
@@ -59,15 +60,8 @@ export default function Home() {
               />
             </TouchableOpacity>
           ),
-          tabBarButton: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Posts')}
-              tabBarActiveBackgroundColor={'#ff6c00'}
-            >
-              <View style={styles.tabBarPostsStyle}>
-                <Image source={PostsIcon} style={{ width: 24, height: 24 }} />
-              </View>
-            </TouchableOpacity>
+          tabBarIcon: ({ color }) => (
+            <Feather name="grid" size={24} color={color} />
           ),
         }}
       ></Tab.Screen>
