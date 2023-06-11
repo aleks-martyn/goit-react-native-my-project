@@ -1,15 +1,14 @@
 import { StyleSheet, Image, Button, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons, Feather } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
 import PostsIcon from '../../images/grid.png';
 import CreateIcon from '../../images/union-white.png';
 import UserIcon from '../../images/user.png';
-import LogOutIcon from '../../images/log-out.png';
-import BackArrowIcon from '../../images/arrow-left.png';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +36,7 @@ const styleScreens = {
     shadowRadius: 0,
   },
   tabBarShowLabel: false,
+  tabBarActiveBackgroundColor: '#FF6C00',
 };
 
 export default function Home() {
@@ -51,13 +51,19 @@ export default function Home() {
           title: 'Публікації',
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <View style={styles.logOutStyle}>
-                <Image source={LogOutIcon} style={{ width: 24, height: 24 }} />
-              </View>
+              <Feather.Button
+                name="log-out"
+                size={24}
+                color="#bdbdbd"
+                backgroundColor="#fff"
+              />
             </TouchableOpacity>
           ),
           tabBarButton: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Posts')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Posts')}
+              tabBarActiveBackgroundColor={'#ff6c00'}
+            >
               <View style={styles.tabBarPostsStyle}>
                 <Image source={PostsIcon} style={{ width: 24, height: 24 }} />
               </View>
@@ -72,12 +78,12 @@ export default function Home() {
           title: 'Створити публікацію',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Posts')}>
-              <View style={styles.BackArrowStyle}>
-                <Image
-                  source={BackArrowIcon}
-                  style={{ width: 24, height: 24 }}
-                />
-              </View>
+              <Feather.Button
+                name="arrow-left"
+                size={24}
+                color="#212121"
+                backgroundColor="#fff"
+              />
             </TouchableOpacity>
           ),
           tabBarButton: () => (
