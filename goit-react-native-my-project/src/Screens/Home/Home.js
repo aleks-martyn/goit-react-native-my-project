@@ -80,19 +80,8 @@ export default function Home() {
               />
             </TouchableOpacity>
           ),
-          tabBarButton: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('CreatePosts')}
-            >
-              <View style={styles.tabBarCreateStyle}>
-                <View style={styles.createPostBtn}>
-                  <Image
-                    source={CreateIcon}
-                    style={{ width: 13, height: 13 }}
-                  />
-                </View>
-              </View>
-            </TouchableOpacity>
+          tabBarIcon: ({color}) => (
+            <Ionicons name='add' size={24} color={color}/>
           ),
         }}
       ></Tab.Screen>
