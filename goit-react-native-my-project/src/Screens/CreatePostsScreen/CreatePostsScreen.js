@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function CreatePostsScreen() {
@@ -12,7 +12,9 @@ export default function CreatePostsScreen() {
   return (
     <View style={styles.container}>
       <Camera type={type} ref={setCameraRef}>
-        <View></View>
+        <View>
+          <TouchableOpacity></TouchableOpacity>
+        </View>
       </Camera>
     </View>
   );
