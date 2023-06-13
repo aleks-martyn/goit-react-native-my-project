@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera } from 'expo-camera';
+import * as MediaLibrary from "expo-media-library";
 import * as Location from 'expo-location';
 import {
   StyleSheet,
@@ -41,7 +42,7 @@ export default function CreatePostsScreen() {
           </View>
         </Camera>
 
-        <Text style={styles.photoLoad} >Завантажте фото</Text>
+        <Text style={styles.photoLoad}>Завантажте фото</Text>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
