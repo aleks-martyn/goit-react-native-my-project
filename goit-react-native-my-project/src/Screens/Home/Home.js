@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 const styleScreens = {
   headerStyle: {
-    height: 88,
+    height: 60,
     backgroundColor: '#fff',
     shadowOffset: {
       width: 0,
