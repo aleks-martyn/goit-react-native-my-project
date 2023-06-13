@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
@@ -10,49 +19,61 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
   const [cameraRef, setCameraRef] = useState(null);
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
 
   const onPublish = () => {
     navigation.navigate('Posts');
+    setName('');
+    setLocation('');
+    console.log(name, location);
   };
 
   return (
-    <View style={styles.container}>
-      <Camera type={type} ref={setCameraRef} style={styles.camera}>
-        <View style={styles.photoView}>
-          <TouchableOpacity style={styles.takePhotoWrap}>
-            <FontAwesome name="camera" size={24} color="#bdbdbd" />
-          </TouchableOpacity>
-        </View>
-      </Camera>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Camera type={type} ref={setCameraRef} style={styles.camera}>
+          <View style={styles.photoView}>
+            <TouchableOpacity style={styles.takePhotoWrap}>
+              <FontAwesome name="camera" size={24} color="#bdbdbd" />
+            </TouchableOpacity>
+          </View>
+        </Camera>
 
-      <Text>Завантажте фото</Text>
-
-      <SafeAreaView>
-        <TextInput
-          style={styles.nameInput}
-          placeholder="Назва..."
-          placeholderTextColor="#bdbdbd"
-        />
-        <View style={styles.locationInputWrap}>
+        <Text style={styles.photoLoad} >Завантажте фото</Text>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
           <TextInput
-            style={styles.locationInput}
-            placeholder="Місцевість..."
+            value={name}
+            onChangeText={setName}
+            style={styles.nameInput}
+            placeholder="Назва..."
             placeholderTextColor="#bdbdbd"
           />
-          <Feather
-            name="map-pin"
-            size={24}
-            color="#bdbdbd"
-            style={styles.locationIcon}
-          />
-        </View>
 
+          <View style={styles.locationInputWrap}>
+            <TextInput
+              value={location}
+              onChangeText={setLocation}
+              style={styles.locationInput}
+              placeholder="Місцевість..."
+              placeholderTextColor="#bdbdbd"
+            />
+            <Feather
+              name="map-pin"
+              size={24}
+              color="#bdbdbd"
+              style={styles.locationIcon}
+            />
+          </View>
+        </KeyboardAvoidingView>
         <TouchableOpacity style={styles.publishBtn} onPress={onPublish}>
           <Text style={styles.textPublishBtn}>Опублікувати</Text>
         </TouchableOpacity>
-      </SafeAreaView>
-    </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -68,12 +89,12 @@ const styles = StyleSheet.create({
   camera: {
     borderRadius: 8,
     height: 200,
-    marginBottom: 8,
+    marginBottom: 5,
   },
   photoView: {
     flex: 1,
     width: 288,
-    height: 200,
+    height: 180,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f6f6f6',
@@ -89,6 +110,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  photoLoad: {
+    color: '#bdbdbd',
+    fontSize: 16,
+    lineHeight: 19,
   },
   nameInput: {
     marginTop: 10,
