@@ -12,7 +12,7 @@ export default function CreatePostsScreen() {
   const [type, setType] = useState(Camera.Constants.Type.back);
 
   const onPublish = () => {
-    console.log('Опубліковано');
+    navigation.navigate('Posts');
   };
 
   return (
