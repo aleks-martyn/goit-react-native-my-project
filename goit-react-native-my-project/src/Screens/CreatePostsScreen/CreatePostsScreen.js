@@ -3,7 +3,7 @@ import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function CreatePostsScreen() {
@@ -32,11 +32,14 @@ export default function CreatePostsScreen() {
         placeholder="Назва..."
         placeholderTextColor="#bdbdbd"
       />
-      <TextInput
-        style={styles.locationInput}
-        placeholder="Місцевість..."
-        placeholderTextColor="#bdbdbd"
-      />
+      <View style={styles.locationInputWrap}>
+        <TextInput
+          style={styles.locationInput}
+          placeholder="Місцевість..."
+          placeholderTextColor="#bdbdbd"
+        />
+        <Feather name='map-pin' size={24} color='#bdbdbd' style={styles.locationIcon} />
+      </View>
 
       <TouchableOpacity style={styles.publishBtn} onPress={onPublish}>
         <Text style={styles.textPublishBtn}>Опублікувати</Text>
@@ -84,12 +87,24 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#bdbdbd',
+    fontSize: 16,
+    lineHeight: 19,
+  },
+  locationInputWrap: {
+    position: 'relative',
+    marginTop: 10,
   },
   locationInput: {
-    marginTop: 10,
+    paddingLeft: 28,
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#bdbdbd',
+    fontSize: 16,
+    lineHeight: 19,
+  },
+  locationIcon: {
+    position: 'absolute',
+    top: -3,
   },
   publishBtn: {
     height: 40,
