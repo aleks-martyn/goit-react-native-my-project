@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
@@ -27,23 +28,30 @@ export default function CreatePostsScreen() {
 
       <Text>Завантажте фото</Text>
 
-      <TextInput
-        style={styles.nameInput}
-        placeholder="Назва..."
-        placeholderTextColor="#bdbdbd"
-      />
-      <View style={styles.locationInputWrap}>
+      <SafeAreaView>
         <TextInput
-          style={styles.locationInput}
-          placeholder="Місцевість..."
+          style={styles.nameInput}
+          placeholder="Назва..."
           placeholderTextColor="#bdbdbd"
         />
-        <Feather name='map-pin' size={24} color='#bdbdbd' style={styles.locationIcon} />
-      </View>
+        <View style={styles.locationInputWrap}>
+          <TextInput
+            style={styles.locationInput}
+            placeholder="Місцевість..."
+            placeholderTextColor="#bdbdbd"
+          />
+          <Feather
+            name="map-pin"
+            size={24}
+            color="#bdbdbd"
+            style={styles.locationIcon}
+          />
+        </View>
 
-      <TouchableOpacity style={styles.publishBtn} onPress={onPublish}>
-        <Text style={styles.textPublishBtn}>Опублікувати</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.publishBtn} onPress={onPublish}>
+          <Text style={styles.textPublishBtn}>Опублікувати</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
     </View>
   );
 }
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
   },
   nameInput: {
     marginTop: 10,
-    paddingBottom: 5,
+    paddingBottom: 7,
     borderBottomWidth: 1,
     borderBottomColor: '#bdbdbd',
     fontSize: 16,
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
   },
   locationInput: {
     paddingLeft: 28,
-    paddingBottom: 5,
+    paddingBottom: 7,
     borderBottomWidth: 1,
     borderBottomColor: '#bdbdbd',
     fontSize: 16,
@@ -108,7 +116,7 @@ const styles = StyleSheet.create({
   },
   publishBtn: {
     height: 40,
-    marginTop: 25,
+    marginTop: 20,
     marginBottom: 16,
     alignItems: 'center',
     backgroundColor: '#f6f6f6',
