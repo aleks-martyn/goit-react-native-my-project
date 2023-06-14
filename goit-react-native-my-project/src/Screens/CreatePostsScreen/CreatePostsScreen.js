@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera } from 'expo-camera';
-import * as MediaLibrary from "expo-media-library";
+import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
 import {
   StyleSheet,
@@ -19,10 +19,27 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
+  const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      await MediaLibrary.requestPermissionsAsync();
+
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
   const onPublish = () => {
     navigation.navigate('Posts');
@@ -98,7 +115,7 @@ const styles = StyleSheet.create({
     height: 180,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f6f6f6',
+    backgroundColor: 'transparent',
     borderRadius: 8,
     borderColor: '#e8e8e8',
     borderWidth: 1,
@@ -108,7 +125,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 50,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
   },
