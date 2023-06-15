@@ -15,7 +15,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
+//import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
@@ -25,6 +25,7 @@ export default function CreatePostsScreen() {
   const [location, setLocation] = useState('');
   const [nameLocation, setNameLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [photo, setPhoto] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -59,13 +60,18 @@ export default function CreatePostsScreen() {
     if (cameraRef) {
       const { uri } = await cameraRef.takePictureAsync();
       await MediaLibrary.createAssetAsync(uri);
+      setPhoto(uri);
     }
   };
 
-  const onPublish = () => {
-    navigation.navigate('Posts');
+  const onPublish = async () => {
+    if (!photo) return;
+    const post = { photo, location, name, nameLocation };
+    navigation.navigate('Posts', { post });
     setName('');
     setNameLocation('');
+    setLocation('');
+    setPhoto(null);
     console.log(name, nameLocation);
   };
 
