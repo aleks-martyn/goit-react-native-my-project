@@ -23,6 +23,7 @@ export default function CreatePostsScreen() {
   const [cameraRef, setCameraRef] = useState(null);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
+  const [nameLocation, setNameLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
 
   useEffect(() => {
@@ -31,6 +32,19 @@ export default function CreatePostsScreen() {
       await MediaLibrary.requestPermissionsAsync();
 
       setHasPermission(status === 'granted');
+
+      let locationPermission =
+        await Location.requestForegroundPermissionsAsync();
+      if (locationPermission.status !== 'granted') {
+        console.log('Permission to access location was denied');
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      setLocation(coords);
     })();
   }, []);
 
@@ -41,11 +55,18 @@ export default function CreatePostsScreen() {
     return <Text>No access to camera</Text>;
   }
 
+  const takePhoto = async () => {
+    if (cameraRef) {
+      const { uri } = await cameraRef.takePictureAsync();
+      await MediaLibrary.createAssetAsync(uri);
+    }
+  };
+
   const onPublish = () => {
     navigation.navigate('Posts');
     setName('');
-    setLocation('');
-    console.log(name, location);
+    setNameLocation('');
+    console.log(name, nameLocation);
   };
 
   return (
@@ -53,7 +74,7 @@ export default function CreatePostsScreen() {
       <View style={styles.container}>
         <Camera type={type} ref={setCameraRef} style={styles.camera}>
           <View style={styles.photoView}>
-            <TouchableOpacity style={styles.takePhotoWrap}>
+            <TouchableOpacity style={styles.takePhotoWrap} onPress={takePhoto}>
               <FontAwesome name="camera" size={24} color="#bdbdbd" />
             </TouchableOpacity>
           </View>
@@ -73,8 +94,8 @@ export default function CreatePostsScreen() {
 
           <View style={styles.locationInputWrap}>
             <TextInput
-              value={location}
-              onChangeText={setLocation}
+              value={nameLocation}
+              onChangeText={setNameLocation}
               style={styles.locationInput}
               placeholder="Місцевість..."
               placeholderTextColor="#bdbdbd"
