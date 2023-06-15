@@ -42,10 +42,8 @@ export default function CreatePostsScreen() {
     };
   }, []);
 
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
+  
+  if (hasPermission === false || null) {
     return <Text>No access to camera</Text>;
   }
 
@@ -73,7 +71,6 @@ export default function CreatePostsScreen() {
     setNameLocation('');
     setLocation('');
     setPhoto(null);
-    console.log(name, nameLocation);
   };
 
   return (
