@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
+import { nanoid } from 'goit-react-native-my-project/node_modules/nanoid';
 import {
   StyleSheet,
   View,
@@ -26,6 +27,9 @@ export default function CreatePostsScreen() {
   const [nameLocation, setNameLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [photo, setPhoto] = useState(null);
+
+  const pablishBtnIsActive = photo ? styles.publishBtnIsActive : styles.publishBtn;
+  const textPublishBtnIsActive = photo ? styles.textPublishBtnIsActive : styles.textPublishBtn;
 
   useEffect(() => {
     async () => {
@@ -112,8 +116,8 @@ export default function CreatePostsScreen() {
             />
           </View>
         </KeyboardAvoidingView>
-        <TouchableOpacity style={styles.publishBtn} onPress={onPublish}>
-          <Text style={styles.textPublishBtn}>Опублікувати</Text>
+        <TouchableOpacity style={[styles.publishBtn, pablishBtnIsActive]} onPress={onPublish}>
+          <Text style={[styles.textPublishBtn, textPublishBtnIsActive]}>Опублікувати</Text>
         </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
@@ -141,10 +145,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    borderRadius: 8,
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
-    borderStyle: 'solid',
   },
   takePhotoWrap: {
     width: 60,
@@ -193,9 +193,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 80,
     borderRadius: 100,
   },
+  publishBtnIsActive: {
+    backgroundColor: '#ff6c00',
+  },
   textPublishBtn: {
     color: '#bdbdbd',
     fontSize: 16,
     lineHeight: 19,
+  },
+  textPublishBtnIsActive: {
+    color: '#fff',
   },
 });
