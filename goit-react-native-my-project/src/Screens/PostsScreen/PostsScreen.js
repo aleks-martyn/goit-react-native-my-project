@@ -34,7 +34,7 @@ export default function PostsScreen() {
             <Image source={{ uri: item.photo }} style={styles.photo} />
             <Text style={styles.nameText}>{item.name}</Text>
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity style={styles.commentsWrap}>
                 <Feather name="message-circle" size={24} color={'#bdbdbd'} />
                 <Text style={styles.commentsText}>0</Text>
               </TouchableOpacity>
@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
     height: 180,
     marginBottom: 8,
     borderRadius: 8,
+  },
+  commentsWrap: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
   },
   nameText: {
     marginBottom: 11,
