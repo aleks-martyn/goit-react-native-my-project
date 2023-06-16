@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  FlatList,
+  Image,
+} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function PostsScreen() {
@@ -15,7 +22,20 @@ export default function PostsScreen() {
     }
   }, [route.params]);
 
-  return <View style={styles.container}></View>;
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={posts}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.itemWrap}>
+            <Image source={{ uri: item.photo }} style={ styles.photo} />
+            <Text>{item.name}</Text>
+          </View>
+        )}
+      />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -24,5 +44,16 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     alignItems: 'center',
+    paddingTop: 10,
+    backgroundColor: '#fff',
   },
+  itemWrap: {
+    marginBottom: 34,
+  },
+  photo: {
+    width: 288,
+    height: 180,
+    marginBottom: 8,
+    borderRadius: 8,
+  }
 });
