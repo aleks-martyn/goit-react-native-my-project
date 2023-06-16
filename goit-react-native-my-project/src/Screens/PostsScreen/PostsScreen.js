@@ -15,7 +15,7 @@ export default function PostsScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const [posts, setPosts] = useState([]);
-
+console.log(posts)
   useEffect(() => {
     if (route.params && route.params.post) {
       setPosts(prev => [route.params.post, ...prev]);
