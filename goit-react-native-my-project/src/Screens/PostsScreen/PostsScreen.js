@@ -16,8 +16,6 @@ export default function PostsScreen() {
   const route = useRoute();
   const [posts, setPosts] = useState([]);
 
-  console.log(posts);
-
   useEffect(() => {
     if (route.params && route.params.post) {
       setPosts(prev => [route.params.post, ...prev]);
@@ -41,7 +39,15 @@ export default function PostsScreen() {
                 <Feather name="message-circle" size={24} color={'#bdbdbd'} />
                 <Text style={styles.commentsText}>0</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.locationWrap} onPress={() => navigation.navigate('Map')}>
+              <TouchableOpacity
+                style={styles.locationWrap}
+                onPress={() =>
+                  navigation.navigate('Map', {
+                    latitude: item.location.coords.latitude,
+                    longitude: item.location.coords.longitude,
+                  })
+                }
+              >
                 <Feather name="map-pin" size={24} color="#bdbdbd" />
                 <Text style={styles.nameLocationText}>{item.nameLocation}</Text>
               </TouchableOpacity>
