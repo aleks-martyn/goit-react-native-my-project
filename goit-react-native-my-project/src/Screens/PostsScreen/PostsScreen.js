@@ -6,8 +6,10 @@ import {
   SafeAreaView,
   FlatList,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 
 export default function PostsScreen() {
   const navigation = useNavigation();
@@ -29,8 +31,15 @@ export default function PostsScreen() {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.itemWrap}>
-            <Image source={{ uri: item.photo }} style={ styles.photo} />
-            <Text>{item.name}</Text>
+            <Image source={{ uri: item.photo }} style={styles.photo} />
+            <Text style={styles.nameText}>{item.name}</Text>
+            <View>
+              <TouchableOpacity>
+                <Feather name="message-circle" size={24} color={'#bdbdbd'} />
+                <Text style={styles.commentsText}>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity></TouchableOpacity>
+            </View>
           </View>
         )}
       />
@@ -55,5 +64,11 @@ const styles = StyleSheet.create({
     height: 180,
     marginBottom: 8,
     borderRadius: 8,
-  }
+  },
+  nameText: {
+    marginBottom: 11,
+  },
+  commentsText: {
+    color: '#bdbdbd',
+  },
 });
