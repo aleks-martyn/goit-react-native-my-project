@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
+    justifyContent: 'flex-end',
   },
   nameText: {
     marginBottom: 11,
