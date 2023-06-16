@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
-import { nanoid } from 'goit-react-native-my-project/node_modules/nanoid';
+//import { nanoid } from 'goit-react-native-my-project/node_modules/nanoid';
 import {
   StyleSheet,
   View,
@@ -23,13 +23,17 @@ export default function CreatePostsScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
+ // const [location, setLocation] = useState({});
   const [nameLocation, setNameLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [photo, setPhoto] = useState(null);
 
-  const pablishBtnIsActive = photo ? styles.publishBtnIsActive : styles.publishBtn;
-  const textPublishBtnIsActive = photo ? styles.textPublishBtnIsActive : styles.textPublishBtn;
+  const pablishBtnIsActive = photo
+    ? styles.publishBtnIsActive
+    : styles.publishBtn;
+  const textPublishBtnIsActive = photo
+    ? styles.textPublishBtnIsActive
+    : styles.textPublishBtn;
 
   useEffect(() => {
     async () => {
@@ -46,7 +50,6 @@ export default function CreatePostsScreen() {
     };
   }, []);
 
-  
   if (hasPermission === false || null) {
     return <Text>No access to camera</Text>;
   }
@@ -63,17 +66,17 @@ export default function CreatePostsScreen() {
     if (!photo) return;
 
     let location = await Location.getCurrentPositionAsync({});
-    const coords = {
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-    };
-    setLocation(coords);
-
+    //const coords = {
+    //  latitude: location.coords.latitude,
+    //  longitude: location.coords.longitude,
+    //};
+    //setLocation(coords);
+//console.log(coords)
     const post = { photo, location, name, nameLocation };
     navigation.navigate('Posts', { post });
     setName('');
     setNameLocation('');
-    setLocation('');
+    //setLocation({});
     setPhoto(null);
   };
 
@@ -116,8 +119,13 @@ export default function CreatePostsScreen() {
             />
           </View>
         </KeyboardAvoidingView>
-        <TouchableOpacity style={[styles.publishBtn, pablishBtnIsActive]} onPress={onPublish}>
-          <Text style={[styles.textPublishBtn, textPublishBtnIsActive]}>Опублікувати</Text>
+        <TouchableOpacity
+          style={[styles.publishBtn, pablishBtnIsActive]}
+          onPress={onPublish}
+        >
+          <Text style={[styles.textPublishBtn, textPublishBtnIsActive]}>
+            Опублікувати
+          </Text>
         </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
