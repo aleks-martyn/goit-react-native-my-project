@@ -16,7 +16,7 @@ import CommentsScreen from './src/Screens/CommentsScreen/CommentsScreen';
 const MainStack = createStackNavigator();
 
 export default function App() {
-  const navigationRef = useNavigationContainerRef();
+  //const navigationRef = useNavigationContainerRef();
 
   return (
     <NavigationContainer>
