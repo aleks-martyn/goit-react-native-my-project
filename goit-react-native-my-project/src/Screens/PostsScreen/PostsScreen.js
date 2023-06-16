@@ -34,17 +34,16 @@ export default function PostsScreen() {
             <Image source={{ uri: item.photo }} style={styles.photo} />
             <Text style={styles.nameText}>{item.name}</Text>
             <View style={styles.infoWrap}>
-              <TouchableOpacity style={styles.commentsWrap}>
+              <TouchableOpacity
+                style={styles.commentsWrap}
+                onPress={() => navigation.navigate('Comments')}
+              >
                 <Feather name="message-circle" size={24} color={'#bdbdbd'} />
                 <Text style={styles.commentsText}>0</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.locationWrap}>
-                <Feather
-                  name="map-pin"
-                  size={24}
-                  color="#bdbdbd"
-                />
-                <Text>{item.nameLocation}</Text>
+              <TouchableOpacity style={styles.locationWrap} onPress={() => navigation.navigate('Map')}>
+                <Feather name="map-pin" size={24} color="#bdbdbd" />
+                <Text style={styles.nameLocationText}>{item.nameLocation}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -96,5 +95,7 @@ const styles = StyleSheet.create({
   commentsText: {
     color: '#bdbdbd',
   },
-  
+  nameLocationText: {
+    color: '#bdbdbd',
+  },
 });
