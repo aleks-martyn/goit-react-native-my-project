@@ -8,12 +8,13 @@ import {
   FlatList,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function CommentsScreen() {
-  const navigation = useNavigation();
   const route = useRoute();
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
@@ -40,7 +41,7 @@ export default function CommentsScreen() {
             keyExtractor={(_, index) => index.toString()}
             renderItem={({ item }) => (
               <>
-                <Text>User</Text>
+                <Text style={styles.userName}>User</Text>
                 <View style={styles.commentWrap}>
                   <Text style={styles.commentText}>{item}</Text>
                 </View>
@@ -50,12 +51,16 @@ export default function CommentsScreen() {
         </SafeAreaView>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput
-          placeholder="Коментувати..."
-          style={styles.input}
-          value={comment}
-          onChangeText={setComment}
-        />
+        <KeyboardAvoidingView
+          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        >
+          <TextInput
+            placeholder="Коментувати..."
+            style={styles.input}
+            value={comment}
+            onChangeText={setComment}
+          />
+        </KeyboardAvoidingView>
         <TouchableOpacity style={styles.inputBtn} onPress={onPressCommentBtn}>
           <AntDesign name="arrowup" size={24} color="#fff" />
         </TouchableOpacity>
@@ -88,7 +93,10 @@ const styles = StyleSheet.create({
   commentWrap: {
     padding: 10,
     marginBottom: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.03)',
+    borderRadius: 4,
   },
+  userName: { marginBottom: 5 },
   commentText: {
     fontSize: 16,
     lineHeight: 19,
