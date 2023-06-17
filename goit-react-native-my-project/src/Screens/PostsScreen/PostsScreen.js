@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   itemWrap: {
+    marginTop: 10,
     marginBottom: 34,
   },
   photo: {
