@@ -14,7 +14,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function CreatePostsScreen() {
@@ -60,11 +60,19 @@ export default function CreatePostsScreen() {
     }
   };
 
+  const flipCamera = () => {
+    setType(
+      type === Camera.Constants.Type.back
+        ? Camera.Constants.Type.front
+        : Camera.Constants.Type.back
+    );
+  };
+
   const onPublish = async () => {
     if (!photo) return;
 
     let location = await Location.getCurrentPositionAsync({});
-    
+
     const post = { photo, location, name, nameLocation };
     navigation.navigate('Posts', { post });
     setName('');
@@ -77,6 +85,13 @@ export default function CreatePostsScreen() {
       <View style={styles.container}>
         <Camera type={type} ref={setCameraRef} style={styles.camera}>
           <View style={styles.photoView}>
+            <TouchableOpacity style={styles.flipContainer} onPress={flipCamera}>
+              <MaterialIcons
+                name="flip-camera-android"
+                size={24}
+                color="#fff"
+              />
+            </TouchableOpacity>
             <TouchableOpacity style={styles.takePhotoWrap} onPress={takePhoto}>
               <FontAwesome name="camera" size={24} color="#bdbdbd" />
             </TouchableOpacity>
@@ -139,6 +154,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   photoView: {
+    position: 'relative',
     flex: 1,
     width: 288,
     height: 180,
@@ -203,5 +219,11 @@ const styles = StyleSheet.create({
   },
   textPublishBtnIsActive: {
     color: '#fff',
+  },
+  flipContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    flex: 1,
   },
 });
