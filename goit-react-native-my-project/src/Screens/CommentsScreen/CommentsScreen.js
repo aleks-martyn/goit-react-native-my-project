@@ -34,7 +34,7 @@ export default function CommentsScreen() {
         <Image source={{ uri }} style={styles.photo} />
         <SafeAreaView></SafeAreaView>
       </View>
-      <View>
+      <View style={styles.inputWrap}>
         <TextInput
           placeholder="Коментувати..."
           style={styles.input}
@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
+    paddingHorizontal: 16,
+    paddingTop: 10,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -67,9 +69,10 @@ const styles = StyleSheet.create({
   inputWrap: {
     position: 'relative',
     width: '100%',
+    marginTop: 30,
   },
   input: {
-    width: 288,
+    width: '100%',
     height: 40,
     paddingVertical: 16,
     paddingLeft: 16,
