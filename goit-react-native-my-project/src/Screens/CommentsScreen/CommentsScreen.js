@@ -19,7 +19,9 @@ export default function CommentsScreen() {
   const [allComments, setAllComments] = useState([]);
   const { uri } = route.params;
 
-  useEffect(() => {if (route.params && route.params.uri) console.log(route.params) }, []);
+  useEffect(() => {
+    if (route.params && route.params.uri) console.log(route.params);
+  }, []);
 
   const onPressCommentBtn = () => {
     if (comment) {
@@ -32,7 +34,20 @@ export default function CommentsScreen() {
     <View style={styles.container}>
       <View>
         <Image source={{ uri }} style={styles.photo} />
-        <SafeAreaView></SafeAreaView>
+        <SafeAreaView style={styles.listWrap}>
+          <FlatList
+            data={allComments}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item }) => (
+              <>
+                <Text>User</Text>
+                <View style={styles.commentWrap}>
+                  <Text style={styles.commentText}>{item}</Text>
+                </View>
+              </>
+            )}
+          />
+        </SafeAreaView>
       </View>
       <View style={styles.inputWrap}>
         <TextInput
@@ -66,10 +81,22 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderRadius: 8,
   },
+  listWrap: {
+    marginTop: 15,
+    height: 220,
+  },
+  commentWrap: {
+    padding: 10,
+    marginBottom: 10,
+  },
+  commentText: {
+    fontSize: 16,
+    lineHeight: 19,
+  },
   inputWrap: {
     position: 'relative',
     width: '100%',
-    marginTop: 30,
+    marginTop: 15,
   },
   input: {
     width: '100%',
