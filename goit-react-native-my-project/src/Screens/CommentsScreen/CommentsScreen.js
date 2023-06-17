@@ -17,10 +17,12 @@ export default function CommentsScreen() {
   const route = useRoute();
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
-
+console.log (allComments)
   const onPressCommentBtn = () => {
-    setAllComments(prev => [...prev, comment]);
-    setComment('');
+    if (comment) {
+      setAllComments(prev => [...prev, comment]);
+      setComment('');
+    }
   };
 
   return (
