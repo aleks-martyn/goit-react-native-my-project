@@ -17,7 +17,10 @@ export default function CommentsScreen() {
   const route = useRoute();
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
-console.log (allComments)
+  const { uri } = route.params;
+
+  useEffect(() => {if (route.params && route.params.uri) console.log(route.params) }, []);
+
   const onPressCommentBtn = () => {
     if (comment) {
       setAllComments(prev => [...prev, comment]);
@@ -28,7 +31,7 @@ console.log (allComments)
   return (
     <View style={styles.container}>
       <View>
-        <Image style={styles.photo} />
+        <Image source={{ uri }} style={styles.photo} />
         <SafeAreaView></SafeAreaView>
       </View>
       <View>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#fff',
   },
   photo: {
