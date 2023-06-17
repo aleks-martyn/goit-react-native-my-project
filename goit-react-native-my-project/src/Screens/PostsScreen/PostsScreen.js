@@ -15,7 +15,7 @@ export default function PostsScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const [posts, setPosts] = useState([]);
-console.log(posts)
+  console.log(posts);
   useEffect(() => {
     if (route.params && route.params.post) {
       setPosts(prev => [route.params.post, ...prev]);
@@ -34,7 +34,9 @@ console.log(posts)
             <View style={styles.infoWrap}>
               <TouchableOpacity
                 style={styles.commentsWrap}
-                onPress={() => navigation.navigate('Comments')}
+                onPress={() =>
+                  navigation.navigate('Comments', { uri: item.photo })
+                }
               >
                 <Feather name="message-circle" size={24} color={'#bdbdbd'} />
                 <Text style={styles.commentsText}>0</Text>
