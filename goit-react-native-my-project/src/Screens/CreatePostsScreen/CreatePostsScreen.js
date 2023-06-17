@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
@@ -16,14 +16,12 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-gesture-handler';
-//import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [name, setName] = useState('');
- // const [location, setLocation] = useState({});
   const [nameLocation, setNameLocation] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [photo, setPhoto] = useState(null);
@@ -66,17 +64,11 @@ export default function CreatePostsScreen() {
     if (!photo) return;
 
     let location = await Location.getCurrentPositionAsync({});
-    //const coords = {
-    //  latitude: location.coords.latitude,
-    //  longitude: location.coords.longitude,
-    //};
-    //setLocation(coords);
-//console.log(coords)
+    
     const post = { photo, location, name, nameLocation };
     navigation.navigate('Posts', { post });
     setName('');
     setNameLocation('');
-    //setLocation({});
     setPhoto(null);
   };
 
