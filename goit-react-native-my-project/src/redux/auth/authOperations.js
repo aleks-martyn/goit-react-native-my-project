@@ -6,4 +6,4 @@ import {
 } from 'firebase/auth';
 import { auth } from '../../../firebase/config';
 
-console.log(auth)
+console.log(auth);
