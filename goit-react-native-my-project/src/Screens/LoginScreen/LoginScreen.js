@@ -43,7 +43,6 @@ export default function LoginScreen() {
       Alert.alert('All fields are required!');
       return;
     }
-    console.log(email, password);
     setEmail('');
     setPassword('');
     navigation.navigate('Home');
