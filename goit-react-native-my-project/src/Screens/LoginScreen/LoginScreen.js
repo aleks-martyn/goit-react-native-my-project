@@ -13,6 +13,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+const auth = getAuth();
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -27,6 +30,7 @@ export default function LoginScreen() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const onPressShowBtn = () => {
     if (password.trim() !== '' && secureTextEntry) {
@@ -38,14 +42,20 @@ export default function LoginScreen() {
     }
   };
 
-  const onLogin = () => {
+  const onLogin = async () => {
     if (email === '' || password === '') {
       Alert.alert('All fields are required!');
       return;
     }
-    setEmail('');
-    setPassword('');
-    navigation.navigate('Home');
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      setError(error.message);
+      console.log(error.message);
+    }
   };
 
   const onRegistration = () => navigation.navigate('Registration');
