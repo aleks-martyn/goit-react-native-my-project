@@ -9,7 +9,10 @@ const MainStack = createStackNavigator();
 export default function UserStack() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
+      <MainStack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
         <MainStack.Screen name="Home" component={Home} />
         <MainStack.Screen
           name="Comments"
