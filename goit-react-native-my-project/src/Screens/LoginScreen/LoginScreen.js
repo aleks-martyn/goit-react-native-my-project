@@ -16,6 +16,8 @@ import BgImage from '../../images/PhotoBG2.jpg';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const auth = getAuth();
+const user = auth.currentUser;
+console.log(user)
 
 export default function LoginScreen() {
   const navigation = useNavigation();
