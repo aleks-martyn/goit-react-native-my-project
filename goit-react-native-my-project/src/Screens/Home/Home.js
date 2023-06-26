@@ -5,6 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
+import { useAuthentication } from '../../../utils/hooks/useAuthentication';
+import { getAuth, signOut } from 'firebase/auth';
+
+const auth = getAuth();
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +52,7 @@ export default function Home() {
         options={{
           title: 'Публікації',
           headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity onPress={() => signOut(auth)}>
               <Feather.Button
                 name="log-out"
                 size={24}
