@@ -15,6 +15,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+
+const auth = getAuth();
 
 export default function RegistrationScreen() {
   const navigation = useNavigation();
@@ -32,6 +35,7 @@ export default function RegistrationScreen() {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const addPhoto = () => {
     console.log('Add a photo');
@@ -47,17 +51,22 @@ export default function RegistrationScreen() {
     }
   };
 
-  const onRegistration = () => {
+  const onRegistration = async () => {
     if (login === '' || email === '' || password === '') {
       Alert.alert('All fields are required!');
       return;
     }
 
-    console.log(login, email, password);
-    setLogin('');
-    setEmail('');
-    setPassword('');
-    navigation.navigate('Home', { screen: 'Posts' });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigation.navigate('Login');
+      setLogin('');
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      setError(error.message);
+      console.log(error.message);
+    }
   };
 
   const onLogin = () => navigation.navigate('Login');
