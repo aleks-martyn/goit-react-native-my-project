@@ -18,6 +18,8 @@ import UnionIcon from '../../images/Union.png';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const auth = getAuth();
+const user = auth.currentUser;
+console.log(user);
 
 export default function RegistrationScreen() {
   const navigation = useNavigation();
