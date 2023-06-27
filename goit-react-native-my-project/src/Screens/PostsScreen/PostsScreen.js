@@ -9,11 +9,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { getAuth } from 'firebase/auth';
 import { Feather } from '@expo/vector-icons';
 
 export default function PostsScreen() {
   const navigation = useNavigation();
   const route = useRoute();
+  const auth = getAuth();
+  const user = auth.currentUser;
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -24,6 +27,10 @@ export default function PostsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View>
+        <Text>{user.displayName}</Text>
+        <Text>{user.email}</Text>
+      </View>
       <FlatList
         data={posts}
         keyExtractor={(_, index) => index.toString()}
