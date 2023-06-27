@@ -19,7 +19,7 @@ import { logIn } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
 const user = auth.currentUser;
-console.log(user)
+console.log(user);
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -55,9 +55,11 @@ export default function LoginScreen() {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await dispatch(logIn({email: email, password: password})).unwrap();
       setEmail('');
       setPassword('');
+      const user = auth.currentUser;
+      console.log(user);
     } catch (error) {
       setError(error.message);
       console.log(error.message);
