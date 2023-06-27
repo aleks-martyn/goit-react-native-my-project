@@ -10,10 +10,12 @@ import {
   View,
   Alert,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { logIn } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
 const user = auth.currentUser;
@@ -21,6 +23,8 @@ console.log(user)
 
 export default function LoginScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const [focusMail, setFocusMail] = useState(false);
   const [focusPass, setFocusPass] = useState(false);
 
