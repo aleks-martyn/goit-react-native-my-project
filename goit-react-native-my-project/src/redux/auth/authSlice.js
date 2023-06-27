@@ -8,13 +8,13 @@ const initialState = {
 };
 
 const handleFulfilledRegister = (state, { payload }) => {
-  state.username = payload.username;
+  state.username = payload.displayName;
   state.email = payload.email;
   state.isLoggedIn = true;
 };
 
 const handleFulfilledLogIn = (state, { payload }) => {
-  state.username = payload.username;
+  state.username = payload.displayName;
   state.email = payload.email;
   state.isLoggedIn = true;
 };
