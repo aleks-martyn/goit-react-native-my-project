@@ -7,6 +7,8 @@ import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
 import { useAuthentication } from '../../../utils/hooks/useAuthentication';
 import { getAuth, signOut } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
 
@@ -43,6 +45,7 @@ const styleScreens = {
 
 export default function Home() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   return (
     <Tab.Navigator initialRouteName="Posts" screenOptions={styleScreens}>
@@ -52,7 +55,7 @@ export default function Home() {
         options={{
           title: 'Публікації',
           headerRight: () => (
-            <TouchableOpacity onPress={() => signOut(auth)}>
+            <TouchableOpacity onPress={() => dispatch(logOut())}>
               <Feather.Button
                 name="log-out"
                 size={24}
