@@ -13,7 +13,7 @@ export default function ProfileScreen() {
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.userWrap}>
           <Text>{user.email}</Text>
-          <Text>{ user.displayName ?? 'underfined'}</Text>
+          <Text>{user.displayName ?? 'underfined'}</Text>
         </View>
       </ImageBackground>
     </View>
