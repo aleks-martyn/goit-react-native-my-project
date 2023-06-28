@@ -19,6 +19,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 export default function CreatePostsScreen() {
   const navigation = useNavigation();
+  
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [name, setName] = useState('');
