@@ -11,26 +11,27 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { getAuth } from 'firebase/auth';
 import { Feather } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPosts } from '../../redux/posts/postsSelectors';
+import { getAllPosts } from '../../redux/posts/postsOperations';
 
 export default function PostsScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const route = useRoute();
   const auth = getAuth();
   const user = auth.currentUser;
-  const [posts, setPosts] = useState([]);
+//  const [posts, setPosts] = useState([]);
+  const { posts } = useSelector(selectPosts);
+  console.log(user.email)
+  
 
   useEffect(() => {
-    if (route.params && route.params.post) {
-      setPosts(prev => [route.params.post, ...prev]);
-    }
-  }, [route.params]);
+    dispatch(getAllPosts());
+  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text>{user.displayName}</Text>
-        <Text>{user.email}</Text>
-      </View>
       <FlatList
         data={posts}
         keyExtractor={(_, index) => index.toString()}
