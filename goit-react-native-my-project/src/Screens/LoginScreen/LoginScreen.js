@@ -59,7 +59,6 @@ export default function LoginScreen() {
       setEmail('');
       setPassword('');
       const user = auth.currentUser;
-      console.log(user);
     } catch (error) {
       setError(error.message);
       console.log(error.message);
