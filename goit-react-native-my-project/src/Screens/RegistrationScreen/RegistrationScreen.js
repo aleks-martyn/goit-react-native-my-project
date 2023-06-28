@@ -21,7 +21,6 @@ import { register } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
 const user = auth.currentUser;
-console.log(user);
 
 export default function RegistrationScreen() {
   const navigation = useNavigation();
@@ -69,7 +68,6 @@ export default function RegistrationScreen() {
       setLogin('');
       setEmail('');
       setPassword('');
-      console.log(user);
     } catch (error) {
       setError(error.message);
       console.log(error.message);
