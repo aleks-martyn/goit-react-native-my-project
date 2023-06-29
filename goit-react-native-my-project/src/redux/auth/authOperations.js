@@ -17,7 +17,11 @@ export const register = createAsyncThunk(
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: username });
 
-      return { displayName: auth.currentUser.displayName, email: auth.currentUser.email, uid: auth.currentUser.uid };
+      return {
+        displayName: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        uid: auth.currentUser.uid,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -29,7 +33,11 @@ export const logIn = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      return { displayName: auth.currentUser.displayName, email: auth.currentUser.email, uid: auth.currentUser.uid };
+      return {
+        displayName: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        uid: auth.currentUser.uid,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
