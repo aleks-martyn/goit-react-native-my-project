@@ -4,24 +4,28 @@ import { register, logIn, logOut } from './authOperations';
 const initialState = {
   username: null,
   email: null,
+  uid: null,
   isLoggedIn: false,
 };
 
 const handleFulfilledRegister = (state, { payload }) => {
   state.username = payload.displayName;
   state.email = payload.email;
+  state.uid = payload.uid;
   state.isLoggedIn = true;
 };
 
 const handleFulfilledLogIn = (state, { payload }) => {
   state.username = payload.displayName;
   state.email = payload.email;
+  state.uid = payload.uid;
   state.isLoggedIn = true;
 };
 
 const handleFulfilledLogOut = state => {
   state.username = null;
   state.email = null;
+  state.uid = null;
   state.isLoggedIn = false;
 };
 
