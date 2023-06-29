@@ -28,7 +28,6 @@ export const getAllPosts = createAsyncThunk(
           postsList.push({ id: doc.id, ...doc.data() });
         });
       }
-      console.log(postsList);
       return postsList;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
