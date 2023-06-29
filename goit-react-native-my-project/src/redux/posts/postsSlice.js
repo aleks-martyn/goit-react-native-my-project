@@ -7,7 +7,6 @@ const initialState = {
 
 const handleFulfilledGetAllPosts = (state, { payload }) => {
     state.posts = payload;
-    console.log(`payload: ${payload}`)
 };
 
 const postsSlice = createSlice({
