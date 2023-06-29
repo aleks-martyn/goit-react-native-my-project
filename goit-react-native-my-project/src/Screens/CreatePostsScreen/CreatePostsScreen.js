@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
-//import { nanoid } from 'goit-react-native-my-project/node_modules/nanoid';
 import {
   StyleSheet,
   View,
