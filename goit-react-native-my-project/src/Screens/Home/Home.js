@@ -6,7 +6,7 @@ import PostsScreen from '../PostsScreen/PostsScreen';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import CreatePostsScreen from '../CreatePostsScreen/CreatePostsScreen';
 import { useAuthentication } from '../../../utils/hooks/useAuthentication';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/authOperations';
 
