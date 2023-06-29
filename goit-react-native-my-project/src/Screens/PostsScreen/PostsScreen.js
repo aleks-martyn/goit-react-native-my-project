@@ -42,7 +42,10 @@ export default function PostsScreen() {
         renderItem={({ item }) => (
           <View style={styles.itemWrap}>
             <Image source={{ uri: item.photo }} style={styles.photo} />
-            <Text style={styles.nameText}>{item.name}</Text>
+            <View style={styles.nameWrap}>
+              <Text>{item.name}</Text>
+              <Text>{item.displayName}</Text>
+            </View>
             <View style={styles.infoWrap}>
               <TouchableOpacity
                 style={styles.commentsWrap}
@@ -111,8 +114,11 @@ const styles = StyleSheet.create({
     gap: 5,
     justifyContent: 'flex-end',
   },
-  nameText: {
+  nameWrap: {
+    flex: 1,
     marginBottom: 11,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   commentsText: {
     color: '#212121',
