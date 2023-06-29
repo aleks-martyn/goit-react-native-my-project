@@ -41,7 +41,7 @@ export default function ProfileScreen() {
             onPress={() => dispatch(logOut())}
             style={styles.logOutBtn}
           >
-            <Feather.Button
+            <Feather
               name="log-out"
               size={24}
               color="#bdbdbd"
