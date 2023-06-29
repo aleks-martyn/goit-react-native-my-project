@@ -13,12 +13,14 @@ import {
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import { getAuth } from 'firebase/auth';
 
 export default function CommentsScreen() {
   const route = useRoute();
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
-  const { uri } = route.params;
+  const { uri, id } = route.params;
+  const { displayName } = getAuth().currentUser;
 
   useEffect(() => {
     if (route.params && route.params.uri) console.log(route.params);
