@@ -77,8 +77,8 @@ export default function CreatePostsScreen() {
 
     try {
       let location = await Location.getCurrentPositionAsync({});
-      const { uid } = getAuth().currentUser;
-      const post = { uid, photo, location, name, nameLocation };
+      const { uid, displayName } = getAuth().currentUser;
+      const post = { uid, photo, location, name, nameLocation, displayName };
       await dispatch(addPost(post)).unwrap();
       navigation.navigate('Posts', { post });
       setName('');
