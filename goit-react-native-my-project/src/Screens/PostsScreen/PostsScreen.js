@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   StyleSheet,
@@ -8,8 +8,12 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { getAuth } from 'firebase/auth';
+import {
+  useNavigation,
+  useRoute,
+  useFocusEffect,
+} from '@react-navigation/native';
+//import { getAuth } from 'firebase/auth';
 import { Feather } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPosts } from '../../redux/posts/postsSelectors';
@@ -18,17 +22,17 @@ import { getAllPosts } from '../../redux/posts/postsOperations';
 export default function PostsScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const route = useRoute();
-  const auth = getAuth();
-  const user = auth.currentUser;
-//  const [posts, setPosts] = useState([]);
-  const { posts } = useSelector(selectPosts);
-  console.log(user.email)
-  
+  //  const route = useRoute();
+  //const auth = getAuth();
+  //const user = auth.currentUser;
+  //  const [posts, setPosts] = useState([]);
+  const posts = useSelector(selectPosts);
 
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getAllPosts()).unwrap();
+    }, [dispatch])
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,7 +51,7 @@ export default function PostsScreen() {
                 }
               >
                 <Feather name="message-circle" size={24} color={'#bdbdbd'} />
-                <Text style={styles.commentsText}>0</Text>
+                <Text style={styles.commentsText}>Коментарі</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.locationWrap}
@@ -111,9 +115,9 @@ const styles = StyleSheet.create({
     marginBottom: 11,
   },
   commentsText: {
-    color: '#bdbdbd',
+    color: '#212121',
   },
   nameLocationText: {
-    color: '#bdbdbd',
+    color: '#212121',
   },
 });
