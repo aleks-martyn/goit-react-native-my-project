@@ -32,7 +32,8 @@ export default function CommentsScreen() {
     if (comment)
       try {
         const { displayName, uid } = getAuth().currentUser;
-        const newComment = { comment, displayName, uid, id, creationTime: Date.now() };
+        const creationTime = Date.now();
+        const newComment = { comment, displayName, uid, id, creationTime };
         await dispatch(addComment(newComment)).unwrap();
         setAllComments(prev => [...prev, comment]);
         setComment('');
