@@ -15,6 +15,7 @@ import { useRoute, useFocusEffect } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { getAuth } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
+import { addComment } from '../../redux/comments/commentsOperations';
 
 export default function CommentsScreen() {
   const route = useRoute();
@@ -22,17 +23,22 @@ export default function CommentsScreen() {
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
   const { uri, id } = route.params;
-  const { displayName, uid } = getAuth().currentUser;
 
   useEffect(() => {
     if (route.params && route.params.uri) console.log(route.params);
   }, []);
 
-  const onPressCommentBtn = () => {
-    if (comment) {
-      setAllComments(prev => [...prev, comment]);
-      setComment('');
-    }
+  const onPressCommentBtn = async () => {
+    if (comment)
+      try {
+        const { displayName, uid } = getAuth().currentUser;
+        const newComment = { comment, displayName, uid, id, creationTime: Date.now() };
+        await dispatch(addComment(newComment)).unwrap();
+        setAllComments(prev => [...prev, comment]);
+        setComment('');
+      } catch (error) {
+        console.log(error.message);
+      }
   };
 
   return (
