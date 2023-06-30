@@ -14,33 +14,41 @@ import {
 import { useRoute, useFocusEffect } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { getAuth } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addComment } from '../../redux/comments/commentsOperations';
+import { getAllComments } from '../../redux/comments/commentsOperations';
+import { selectComments } from '../../redux/comments/commentsSelectors';
 
 export default function CommentsScreen() {
   const route = useRoute();
   const dispatch = useDispatch();
-  const [comment, setComment] = useState('');
-  const [allComments, setAllComments] = useState([]);
-  const { uri, id } = route.params;
+  const allComments = useSelector(selectComments);
 
-  useEffect(() => {
-    if (route.params && route.params.uri) console.log(route.params);
-  }, []);
+  const [comment, setComment] = useState('');
+  const { uri, id } = route.params;
 
   const onPressCommentBtn = async () => {
     if (comment)
       try {
         const { displayName, uid } = getAuth().currentUser;
         const creationTime = Date.now();
-        const newComment = { comment, displayName, uid, id, creationTime };
+        const postId = id;
+        const newComment = { comment, displayName, uid, postId, creationTime };
         await dispatch(addComment(newComment)).unwrap();
-        setAllComments(prev => [...prev, comment]);
+
         setComment('');
       } catch (error) {
         console.log(error.message);
       }
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getAllComments()).unwrap();
+    }, [dispatch])
+  );
+
+  const filteredCommentsByPost = allComments.filter(item => item.postId === id);
 
   return (
     <View style={styles.container}>
@@ -48,13 +56,13 @@ export default function CommentsScreen() {
         <Image source={{ uri }} style={styles.photo} />
         <SafeAreaView style={styles.listWrap}>
           <FlatList
-            data={allComments}
+            data={filteredCommentsByPost}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({ item }) => (
               <>
-                <Text style={styles.userName}>User</Text>
+                <Text style={styles.userName}>{item.displayName}</Text>
                 <View style={styles.commentWrap}>
-                  <Text style={styles.commentText}>{item}</Text>
+                  <Text style={styles.commentText}>{item.comment}</Text>
                 </View>
               </>
             )}
