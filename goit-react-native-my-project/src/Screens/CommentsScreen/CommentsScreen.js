@@ -49,6 +49,10 @@ export default function CommentsScreen() {
   );
 
   const filteredCommentsByPost = allComments.filter(item => item.postId === id);
+  const sortedComments = [...filteredCommentsByPost].sort(
+    (firstComment, secondComment) =>
+      firstComment.creationTime - secondComment.creationTime
+  );
 
   return (
     <View style={styles.container}>
@@ -56,7 +60,7 @@ export default function CommentsScreen() {
         <Image source={{ uri }} style={styles.photo} />
         <SafeAreaView style={styles.listWrap}>
           <FlatList
-            data={filteredCommentsByPost}
+            data={sortedComments}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({ item }) => (
               <>
