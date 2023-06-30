@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,16 +11,18 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useFocusEffect } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { getAuth } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
 
 export default function CommentsScreen() {
   const route = useRoute();
+  const dispatch = useDispatch();
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
   const { uri, id } = route.params;
-  const { displayName } = getAuth().currentUser;
+  const { displayName, uid } = getAuth().currentUser;
 
   useEffect(() => {
     if (route.params && route.params.uri) console.log(route.params);
