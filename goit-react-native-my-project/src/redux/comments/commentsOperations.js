@@ -17,3 +17,20 @@ export const addComment = createAsyncThunk(
   }
 );
 
+export const getAllComments = createAsyncThunk(
+  'comments/fetchAllComments',
+  async (_, thunkAPI) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'comments'));
+      let commentsList = [];
+      if (querySnapshot) {
+        querySnapshot.forEach(doc => {
+          commentsList.push({ id: doc.id, ...doc.data() });
+        });
+      }
+      return commentsList;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
