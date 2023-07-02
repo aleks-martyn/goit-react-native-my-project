@@ -1,4 +1,4 @@
- {
+{
   "expo": {
     "name": "goit-react-native-my-project",
     "slug": "goit-react-native-my-project",
@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aleksmartyn.goitreactnativemyproject"
     },
     "web": {
       "favicon": "./assets/favicon.png"
