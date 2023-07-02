@@ -29,6 +29,9 @@ export default {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
+      "eas": {
+        "projectId": "539cd9a8-a052-4711-9ee0-89256f6e0558"
+      },
       firebaseApiKey: process.env.FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
       firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
@@ -36,9 +39,6 @@ export default {
       firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
       firebaseAppId: process.env.FIREBASE_APP_ID,
       firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
-      "eas": {
-        "projectId": "539cd9a8-a052-4711-9ee0-89256f6e0558"
-      },
     }
   }
 }
