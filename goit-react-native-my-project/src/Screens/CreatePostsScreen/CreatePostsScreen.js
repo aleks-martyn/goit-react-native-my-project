@@ -38,7 +38,7 @@ export default function CreatePostsScreen() {
     : styles.textPublishBtn;
 
   useEffect(() => {
-    async () => {
+    (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       await MediaLibrary.requestPermissionsAsync();
 
@@ -49,7 +49,7 @@ export default function CreatePostsScreen() {
       if (locationPermission.status !== 'granted') {
         console.log('Permission to access location was denied');
       }
-    };
+    })();
   }, []);
 
   if (hasPermission === false || null) {
