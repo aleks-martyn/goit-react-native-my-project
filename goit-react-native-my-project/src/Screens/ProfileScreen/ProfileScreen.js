@@ -4,7 +4,6 @@ import {
   View,
   Text,
   ImageBackground,
-  SafeAreaView,
   FlatList,
   Image,
   TouchableOpacity,
@@ -33,7 +32,7 @@ export default function ProfileScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ImageBackground source={BgImage} resizeMode="cover" style={styles.image}>
         <View style={styles.wrap}>
           <View style={styles.userPicture}></View>
@@ -90,7 +89,7 @@ export default function ProfileScreen() {
           />
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 }
 
