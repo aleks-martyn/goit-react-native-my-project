@@ -20,6 +20,7 @@ export default function UserStack() {
           options={{
             headerShown: true,
             title: 'Коментарі',
+            headerTitleAlign: "center",
             headerBackTitleVisible: false,
             headerTintColor: '#212121',
           }}
@@ -30,6 +31,7 @@ export default function UserStack() {
           options={{
             headerShown: true,
             title: 'Мапа',
+            headerTitleAlign: "center",
             headerBackTitleVisible: false,
             headerTintColor: '#212121',
           }}
