@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 400,
     paddingTop: 70,
-    paddingHorizontal: 16,
+    paddingHorizontal: 25,
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   userPicture: {
     position: 'absolute',
     top: -60,
-    left: 100,
+    alignSelf: 'center',
     width: 120,
     height: 120,
     backgroundColor: '#f6f6f6',
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     height: 180,
     marginBottom: 8,
     borderRadius: 8,
+    alignSelf: 'center',
   },
   infoWrap: {
     flex: 1,
