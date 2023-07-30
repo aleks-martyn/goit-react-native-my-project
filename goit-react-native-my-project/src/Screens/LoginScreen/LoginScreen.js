@@ -53,7 +53,7 @@ export default function LoginScreen() {
     }
 
     try {
-      await dispatch(logIn({email: email, password: password})).unwrap();
+      await dispatch(logIn({ email: email, password: password })).unwrap();
       setEmail('');
       setPassword('');
       const user = auth.currentUser;
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 35,
-    paddingHorizontal: 16,
+    paddingHorizontal: 10,
     marginBottom: 10,
     backgroundColor: '#f6f6f6',
     borderColor: '#e8e8e8',
@@ -169,8 +169,9 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginBottom: 16,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#ff6c00',
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 80,
     borderRadius: 50,
   },
@@ -184,10 +185,11 @@ const styles = StyleSheet.create({
   },
   showBtn: {
     position: 'absolute',
-    top: 54,
+    top: 52,
     right: 18,
   },
   textShowBtn: {
+    textAlign: 'center',
     fontSize: 16,
     lineHeight: 19,
     color: '#1B4371',
