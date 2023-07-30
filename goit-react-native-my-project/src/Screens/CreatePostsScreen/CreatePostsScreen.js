@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f6f6f6',
     paddingVertical: 6,
-    paddingHorizontal: 80,
+    paddingHorizontal: 70,
     borderRadius: 50,
   },
   publishBtnIsActive: {
