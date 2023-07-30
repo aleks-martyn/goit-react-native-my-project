@@ -1,19 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
   View,
   StyleSheet,
   Text,
-  SafeAreaView,
   FlatList,
   Image,
   TouchableOpacity,
 } from 'react-native';
 import {
   useNavigation,
-  useRoute,
   useFocusEffect,
 } from '@react-navigation/native';
-//import { getAuth } from 'firebase/auth';
 import { Feather } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPosts } from '../../redux/posts/postsSelectors';
@@ -22,10 +19,6 @@ import { getAllPosts } from '../../redux/posts/postsOperations';
 export default function PostsScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  //  const route = useRoute();
-  //const auth = getAuth();
-  //const user = auth.currentUser;
-  //  const [posts, setPosts] = useState([]);
   const posts = useSelector(selectPosts);
 
   useFocusEffect(
@@ -35,7 +28,7 @@ export default function PostsScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={posts}
         keyExtractor={(_, index) => index.toString()}
@@ -72,7 +65,7 @@ export default function PostsScreen() {
           </View>
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
