@@ -54,6 +54,7 @@ export default function Home() {
         component={PostsScreen}
         options={{
           title: 'Публікації',
+          headerTitleAlign: "center",
           headerRight: () => (
             <TouchableOpacity onPress={() => dispatch(logOut())}>
               <Feather.Button
@@ -69,7 +70,7 @@ export default function Home() {
           ),
           tabBarItemStyle: {
             height: 50,
-            borderRadius: '50%',
+            borderRadius: 50,
             marginTop: 9,
             marginRight: 10,
             marginLeft: 20,
@@ -81,6 +82,7 @@ export default function Home() {
         component={CreatePostsScreen}
         options={{
           title: 'Створити публікацію',
+          headerTitleAlign: "center",
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Posts')}>
               <Feather.Button
@@ -96,7 +98,7 @@ export default function Home() {
           ),
           tabBarItemStyle: {
             height: 50,
-            borderRadius: '50%',
+            borderRadius: 50,
             marginTop: 9,
             marginHorizontal: 5,
           },
@@ -112,7 +114,7 @@ export default function Home() {
           ),
           tabBarItemStyle: {
             height: 50,
-            borderRadius: '50%',
+            borderRadius: 50,
             marginTop: 9,
             marginRight: 20,
             marginLeft: 10,
