@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: 25,
     paddingTop: 10,
     backgroundColor: '#fff',
   },
@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
     height: 180,
     width: 288,
     marginBottom: 5,
+    alignSelf: 'center',
   },
   photoView: {
     position: 'relative',
