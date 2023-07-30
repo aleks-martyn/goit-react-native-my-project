@@ -1,7 +1,6 @@
 import {
   ImageBackground,
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -16,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
 import UnionIcon from '../../images/Union.png';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { register } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
@@ -93,7 +92,7 @@ export default function RegistrationScreen() {
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>Реєстрація</Text>
-            <SafeAreaView>
+            <View>
               <View>
                 <TextInput
                   style={[styles.input, customStyleLog]}
@@ -138,7 +137,7 @@ export default function RegistrationScreen() {
               <TouchableOpacity onPress={onLogin}>
                 <Text style={styles.textLogIn}>Вже є акаунт? Увійти</Text>
               </TouchableOpacity>
-            </SafeAreaView>
+            </View>
           </View>
         </ImageBackground>
       </View>
@@ -192,7 +191,7 @@ const styles = StyleSheet.create({
     borderColor: '#ff6c00',
     borderStyle: 'solid',
     borderWidth: 1,
-    borderRadius: '50%',
+    borderRadius: 50,
   },
   title: {
     marginBottom: 15,
@@ -225,7 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff6c00',
     paddingVertical: 10,
     paddingHorizontal: 80,
-    borderRadius: 100,
+    borderRadius: 50,
   },
   textButton: {
     color: '#fff',
