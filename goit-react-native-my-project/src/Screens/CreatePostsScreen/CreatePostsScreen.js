@@ -159,7 +159,8 @@ const styles = StyleSheet.create({
   },
   camera: {
     borderRadius: 8,
-    height: 200,
+    height: 180,
+    width: 288,
     marginBottom: 5,
   },
   photoView: {
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     alignItems: 'center',
     backgroundColor: '#f6f6f6',
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 80,
     borderRadius: 50,
   },
