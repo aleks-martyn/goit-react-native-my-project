@@ -1,6 +1,5 @@
 import {
   ImageBackground,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -14,12 +13,11 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { logIn } from '../../redux/auth/authOperations';
 
 const auth = getAuth();
 const user = auth.currentUser;
-console.log(user);
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -77,7 +75,7 @@ export default function LoginScreen() {
         >
           <View style={styles.wrap}>
             <Text style={styles.title}>Увійти</Text>
-            <SafeAreaView style={styles.form}>
+            <View style={styles.form}>
               <View>
                 <TextInput
                   style={[styles.input, customStyleMail]}
@@ -113,7 +111,7 @@ export default function LoginScreen() {
                   Немає акаунту? Зареєструватися
                 </Text>
               </TouchableOpacity>
-            </SafeAreaView>
+            </View>
           </View>
         </ImageBackground>
       </View>
@@ -174,7 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff6c00',
     paddingVertical: 10,
     paddingHorizontal: 80,
-    borderRadius: 100,
+    borderRadius: 50,
   },
   textButton: {
     color: '#fff',
