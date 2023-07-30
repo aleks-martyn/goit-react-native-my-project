@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f6f6f6',
     paddingVertical: 10,
     paddingHorizontal: 80,
-    borderRadius: 100,
+    borderRadius: 50,
   },
   publishBtnIsActive: {
     backgroundColor: '#ff6c00',
