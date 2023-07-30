@@ -1,15 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import 'firebase/auth';
-//import Constants from 'expo-constants';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCqBUoPniFFbwK17TCKYMpmhNMnVOeiLws',
-  authDomain:'posts-9d0f3.firebaseapp.com',
-  projectId: 'posts-9d0f3',
-  storageBucket: 'posts-9d0f3.appspot.com',
-  messagingSenderId: '1098182767392',
-  appId: '1:1098182767392:web:2b10c6a554b841586b9d45',
-  measurementId: 'G-3C9KNLM62Q',
+  apiKey: "AIzaSyBStyeAXxbTLrYnVtaDTHDFr1FVDMPQpJI",
+  authDomain: "posts3.firebaseapp.com",
+  projectId: "posts3",
+  storageBucket: "posts3.appspot.com",
+  messagingSenderId: "646789174786",
+  appId: "1:646789174786:web:2408c9f86a001e94f7791b"
 };
 
 const app = initializeApp(firebaseConfig);
