@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   StyleSheet,
   View,
   Text,
   Image,
-  SafeAreaView,
   FlatList,
   TextInput,
   TouchableOpacity,
@@ -58,7 +57,7 @@ export default function CommentsScreen() {
     <View style={styles.container}>
       <View>
         <Image source={{ uri }} style={styles.photo} />
-        <SafeAreaView style={styles.listWrap}>
+        <View style={styles.listWrap}>
           <FlatList
             data={sortedComments}
             keyExtractor={(_, index) => index.toString()}
@@ -71,7 +70,7 @@ export default function CommentsScreen() {
               </>
             )}
           />
-        </SafeAreaView>
+        </View>
       </View>
       <View style={styles.inputWrap}>
         <KeyboardAvoidingView
