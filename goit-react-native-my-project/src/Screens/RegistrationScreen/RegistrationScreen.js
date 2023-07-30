@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import BgImage from '../../images/PhotoBG2.jpg';
-import UnionIcon from '../../images/Union.png';
+import { AntDesign } from '@expo/vector-icons';
 import { getAuth } from 'firebase/auth';
 import { register } from '../../redux/auth/authOperations';
 
@@ -62,7 +62,9 @@ export default function RegistrationScreen() {
     }
 
     try {
-      await dispatch(register({ username: login, email: email, password: password })).unwrap();
+      await dispatch(
+        register({ username: login, email: email, password: password })
+      ).unwrap();
       navigation.navigate('Login');
       setLogin('');
       setEmail('');
@@ -85,10 +87,8 @@ export default function RegistrationScreen() {
         >
           <View style={styles.wrap}>
             <View style={styles.userPicture}>
-              <TouchableOpacity onPress={addPhoto}>
-                <View style={styles.wrapUnion}>
-                  <Image source={UnionIcon} style={{ width: 13, height: 13 }} />
-                </View>
+              <TouchableOpacity onPress={addPhoto} style={styles.wrapUnion}>
+                <AntDesign name="pluscircleo" size={25} color={'#ff6c00'} />
               </TouchableOpacity>
             </View>
             <Text style={styles.title}>Реєстрація</Text>
@@ -183,15 +183,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 81,
     right: -12,
-    width: 25,
-    height: 25,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#ff6c00',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRadius: 50,
   },
   title: {
     marginBottom: 15,
