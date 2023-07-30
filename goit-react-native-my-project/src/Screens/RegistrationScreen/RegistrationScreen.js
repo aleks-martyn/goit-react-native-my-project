@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   userPicture: {
     position: 'absolute',
     top: -60,
-    left: 100,
+    alignSelf: 'center',
     width: 120,
     height: 120,
     backgroundColor: '#f6f6f6',
